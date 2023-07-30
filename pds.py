@@ -1,7 +1,6 @@
 import os
 import pandas as pd
-from conll_df import conll_df
-from bs4 import BeautifulSoup
+
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import Element as Element
 import re
@@ -66,3 +65,15 @@ baseform_words = list(filter(baseform_filter, words))
 print(len(baseform_words))
 print(len(info))
 
+#extract phrases into dict: key-phrase id, val-function
+def dict_phrases(info):
+    phrase_dict = {}
+    for phrase in info:
+        function = phrase.get('function')
+        id = phrase.get('id')
+        phrase_dict[id] = function
+    return phrase_dict
+
+
+print(dict_phrases(info))
+print(len(dict_phrases(info)))
