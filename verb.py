@@ -148,6 +148,7 @@ class Verb:
         'gender': self.gender,
         'person': self.person,
         'tense': self.tense,
+        'phrase id': self.phrase_id,
         'syntactic attributes': self.syntactic_attributes
         }
         return pd.DataFrame(data, index=[0])
