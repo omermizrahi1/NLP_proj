@@ -1,29 +1,21 @@
-import threading
+
+from lightgbm import LGBMClassifier
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.calibration import _CalibratedClassifier, CalibratedClassifierCV, LabelEncoder, LinearSVC
+from sklearn import model_selection
+from sklearn.metrics import accuracy_score
+from sklearn.calibration import LabelEncoder
 from sklearn.decomposition import PCA
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, ExtraTreesClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier, RandomForestClassifier, StackingClassifier, VotingClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.linear_model import LogisticRegression, PassiveAggressiveClassifier, Perceptron, SGDClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
+from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.neighbors import KNeighborsClassifier, NearestCentroid, RadiusNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
-from sklearn.semi_supervised import LabelPropagation, LabelSpreading
-from sklearn.svm import SVC, NuSVC
-from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
-from catboost import CatBoostClassifier
-from lazypredict.Supervised import LazyClassifier
-from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 import optuna
 from optuna.samplers import TPESampler, CmaEsSampler
+from optuna import Trial, visualization
 
 
 
@@ -75,17 +67,18 @@ for method in methods:
     y = df.iloc[:, -1]   
     print(f"y size = {y.size}")
 
-    encoder = OneHotEncoder(sparse=False)
-    X_encoded = encoder.fit_transform(X)
-    X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)
+    encoder = OneHotEncoder(sparse=False , handle_unknown='ignore')
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train = encoder.fit_transform(X_train)
+    X_test = encoder.fit_transform(X_test)
 
     label_encoder = LabelEncoder()
-    y_train_encoded = label_encoder.fit_transform(y_train)
-    y_test_encoded = label_encoder.fit_transform(y_test)
+    y_train = label_encoder.fit_transform(y_train)
+    y_test = label_encoder.fit_transform(y_test)
 
-    clf = LazyClassifier(verbose=0,ignore_warnings=True, custom_metric=None)
-    models,predictions = clf.fit(X_train, X_test, y_train_encoded, y_test_encoded)
-    print(models)
+    # clf = LazyClassifier(verbose=0,ignore_warnings=True, custom_metric=None)
+    # models,predictions = clf.fit(X_train, X_test, y_train, y_test)
+    # print(models)
 
 
 
@@ -94,7 +87,7 @@ for method in methods:
 # LGBMClassifier                     0.59               0.28    None      0.54        0.91
 # XGBClassifier                      0.59               0.28    None      0.54        1.21
 # ExtraTreesClassifier               0.58               0.28    None      0.53        0.30
-# RandomForestClassifier    
+# RandomForestClassifier 
 
 
 # best models for blau
@@ -105,26 +98,74 @@ for method in methods:
 # ExtraTreesClassifier               0.60               0.28    None      0.55        0.28
 
 
-g_classifiers = ["NearestCentroid", "LGBMClassifier", "XGBClassifier, ExtraTreesClassifier, ExtraTreesClassifier"]
-b_classifiers = ["NearestCentroid", "XGBClassifier", "LGBMClassifier", "RandomForestClassifier", "ExtraTreesClassifier"]
+
 
 def objective(trial):
-    
 
-    classifier_name = trial.suggest_categorical("classifier", g_classifiers)
-    if classifier_name == "SVC":
-        svc_c = trial.suggest_float("svc_c", 1e-10, 1e10, log=True)
-        classifier_obj = sklearn.svm.SVC(C=svc_c, gamma="auto")
-    elif classifier_name == "RandomForest":
-        rf_max_depth = trial.suggest_int("rf_max_depth", 2, 32, log=True)
-        classifier_obj = sklearn.ensemble.RandomForestClassifier(
-            max_depth=rf_max_depth, n_estimators=10)
-    elif classifier_name == "Logistic":
-        logistic_penalty = trial.suggest_categorical("logistic_penalty", ["l1", "l2", "elasticnet", None])
-        classifier_obj = sklearn.linear_model.LogisticRegression(penalty=logistic_penalty)
-    else:
-        exit('error: unknown classifier')
-    score = sklearn.model_selection.cross_val_score(classifier_obj, x, y, n_jobs=-1, cv=3)
+    
+    rf_params = {
+        'n_estimators': trial.suggest_int("n_estimators1", 100, 500, log=True),
+        'criterion': trial.suggest_categorical("criterion1", ['log_loss', 'entropy', 'gini']),
+        'max_features':  trial.suggest_int("max_features1", 1, 8, log=True),
+        'max_depth': trial.suggest_int("max_depth1", 5, 30, log=True),
+        'min_samples_split': trial.suggest_int("min_samples_split1", 2, 100, log=True),
+        'min_samples_leaf': trial.suggest_int("min_samples_leaf1", 1, 10, log=True)
+    }
+
+    xgb_params = {
+        'lambda': trial.suggest_loguniform('lambda2', 1e-3, 10.0),
+        'alpha': trial.suggest_loguniform('alpha2', 1e-3, 10.0),
+        'colsample_bytree': trial.suggest_categorical('colsample_bytree2', [0.3,0.4,0.5,0.6,0.7,0.8,0.9, 1.0]),
+        'subsample': trial.suggest_categorical('subsample2', [0.4,0.5,0.6,0.7,0.8,1.0]),
+        'learning_rate': trial.suggest_categorical('learning_rate2', [0.008,0.01,0.012,0.014,0.016,0.018, 0.02]),
+        'n_estimators': 10000,
+        'max_depth': trial.suggest_categorical('max_depth2', [5,7,9,11,13,15,17]),
+        'random_state': trial.suggest_categorical('random_state2', [2020]),
+        'min_child_weight': trial.suggest_int('min_child_weight2', 1, 300),
+    }
+
+    et_params = {
+    'n_estimators': trial.suggest_int('n_estimators3', 50, 120),
+    'max_depth': trial.suggest_int('max_depth3', 10, 16),
+    'max_leaf_nodes': trial.suggest_int('max_leaf_nodes3', 15, 25),
+    'criterion': trial.suggest_categorical('criterion3', ['gini', 'entropy'])
+}
+
+    lgbm_params = { 
+        "objective": "multiclass",
+        "verbosity": -1,
+        "boosting_type": "gbdt",
+        "lambda_l1": trial.suggest_float("lambda_l1", 1e-8, 10.0, log=True),
+        "lambda_l2": trial.suggest_float("lambda_l2", 1e-8, 10.0, log=True),
+        "num_leaves": trial.suggest_int("num_leaves", 2, 256),
+        "feature_fraction": trial.suggest_float("feature_fraction", 0.4, 1.0),
+        "bagging_fraction": trial.suggest_float("bagging_fraction", 0.4, 1.0),
+        "bagging_freq": trial.suggest_int("bagging_freq", 1, 7),
+        "min_child_samples": trial.suggest_int("min_child_samples", 5, 100),
+        }
+
+    nc_params = {
+        'shrink_threshold': trial.suggest_uniform('shrink_threshold', 0, 1)
+    }
+
+    classifiers = ["NearestCentroid", "XGBClassifier", "RandomForestClassifier", "ExtraTreesClassifier", "LGBMClassifier"]
+
+    clfs = {"NearestCentroid": NearestCentroid(**nc_params), 
+            "LGBMClassifier": LGBMClassifier(**lgbm_params), 
+            "XGBClassifier": XGBClassifier(**xgb_params), 
+            "ExtraTreesClassifier": ExtraTreesClassifier(**et_params), 
+            "RandomForestClassifier": RandomForestClassifier(**rf_params)}
+    classifier_name = trial.suggest_categorical("classifier", classifiers)
+    classifier_obj = clfs[classifier_name]
+    score = model_selection.cross_val_score(classifier_obj, X_train, y_train, n_jobs=-1, cv=3)
     accuracy = score.mean()
     return accuracy
+
+# study = optuna.create_study(direction="maximize", sampler=TPESampler())
+# study.optimize(objective, n_trials=1000)
+# print('best_trial\n', study.best_trial)
+# print('best_params\n', study.best_params)
+# print('best_value\n', study.best_value)
+
+
 
