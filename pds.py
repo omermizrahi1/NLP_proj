@@ -153,7 +153,7 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
     return result_df
         # print(f'Verb: {verb}, phrase id: {phrase_id}, Related words: {related_rows["text"].tolist()}')
 
-window = 2
+window = 5
 window_df = get_words_by_window(combined_df,verbs_df,window)
 window_df.to_excel(f'window_words_{window}.xlsx', index=False)
 

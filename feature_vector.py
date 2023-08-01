@@ -3,7 +3,7 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import numpy as np
 
-
+sheet_name = 'Tanach verbs'
 verbs_df = pds.verbs_df
 sentences_df = pds.combined_df
 window_df = pds.window_df
@@ -44,7 +44,20 @@ cols_to_drop = [col for col in new_df.columns if 'target word phrase id' in col]
 # Drop the columns from the DataFrame
 new_df = new_df.drop(cols_to_drop, axis=1)
 cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
+
 new_df = new_df.drop(cols_to_drop, axis=1)
+new_df_glinert = new_df.copy()
+new_df_blau = new_df.copy()
+
+tagged_verbs = pd.read_excel('tagged_verbs.xlsx', sheet_name=sheet_name)
+glinert_column = tagged_verbs['Glinert']
+blau_column = tagged_verbs['Blau']
+
+new_df_glinert = pd.concat([new_df_glinert, glinert_column], axis=1)
+new_df_blau = pd.concat([new_df_blau, blau_column], axis=1)
+
+new_df_glinert.to_excel('merged_glinert.xlsx', index=False)
+new_df_blau.to_excel('merged_blau.xlsx', index=False)
 new_df.to_excel('merged.xlsx', index=False)
 
 
