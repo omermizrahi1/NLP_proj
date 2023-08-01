@@ -110,7 +110,7 @@ for verbs_df,source in zip(list_of_dataframes, sources):
             w['index'] = i
             df_list.append(pd.DataFrame(w, index=[0]))
 combined_df = pd.concat([df for df in df_list], ignore_index=True)
-combined_df.to_excel('senteces.xlsx', index=False)
+combined_df.to_excel('sentences.xlsx', index=False)
 
 excel_file_path = 'verbs.xlsx'
 sheet_name = 'Tanach verbs'
@@ -131,10 +131,25 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
         # print(index)
         # Find all rows in sentences_df that have a target verb value equal to verb by masking
         related_rows = sentences_df[combined_df['target verb'] == verb]
-        related_rows = related_rows["text"].tolist()
+        # related_rows = related_rows["text"].tolist()
         # print(related_rows)
         window = get_window(related_rows,index,window_size=window_size)
-        window_df = pd.DataFrame({'word': window, 'target word': verb})
+        window_df = pd.DataFrame({
+            'text': window['text'],
+            'target word': verb,
+            'target word phrase id': phrase_id,
+            'phrase id': window['phrase id'],
+            'POS': window['POS'],
+            'GENDER': window['GENDER'],
+            'NUMBER': window['NUMBER'],
+            'STATUS': window['STATUS'],
+            'function': window['function'],
+            'sentence id': window['sentence id'],
+            'index': window['index'],
+            'PERSON': window['PERSON'],
+            'TENSE': window['TENSE'],
+            'BINYAN': window['BINYAN']
+        })
         df_list.append(window_df)
 
     result_df = pd.concat(df_list, ignore_index=True)
