@@ -46,35 +46,42 @@ new_df = new_df.drop(cols_to_drop, axis=1)
 cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
 new_df = new_df.drop(cols_to_drop, axis=1)
 new_df.to_excel('merged.xlsx', index=False)
-#
-#
-# feature_combinations = [
-#     ['lemma', 'binyan'],
-#     ['lemma'],
-#     ['lemma','binyan','number','gender'],
-#     ['binyan','number','gender'],
-# ]
-#
-#
-# # Create a list to store the resulting feature vectors
+
+
+
+# למה + מורפולוגי
+# למה + תחבירי
+# למה + מורפולוגי + תחבירי
+# למה + חלק דיבר
+# מורפולוגי + תחבירי
+# חלק דיבר + תחבירי
 # feature_vectors = []
-#
-# # Iterate over the unique target word phrase ids in window_df
-# for phrase_id in window_df['target word phrase id'].unique():
-#     # Find all rows in window_df that have the same target word phrase id
-#     related_rows = window_df[window_df['target word phrase id'] == phrase_id]
-#
-#
-# # Iterate over the feature combinations
+# feature_combinations = []
+# for i in range(2*window + 1):
+#     feature_combinations += [
+#         [f'POS_{i}', f'NUMBER_{i}'],
+#         [f'POS_{i}',f'TENSE_{i}',f'FUNCTION_{i}'],
+#         [f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}'],
+#         [f'TENSE_{i}',f'NUMBER_{i}',f'FUNCTION_{i}'],
+#         [f'POS_{i}',f'NUMBER_{i}',f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}'],
+#         [f'POS_{i}',f'NUMBER_{i}',f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}',f'TENSE_{i}'],
+#     ]
+
+
+# print(feature_combinations)
+# # # Create a list to store the resulting feature vectors
+
+# # # Iterate over the feature combinations
 # for features in feature_combinations:
-#     # Fit the encoder on the current feature combination
-#     encoder.fit(verbs_df[features])
-#
-#     # Transform the features into a one-hot encoded representation
-#     one_hot = encoder.transform(verbs_df[features]).toarray()
-#
-#     # Add the resulting feature vectors to the list
+#         # Fit the encoder on the current feature combination
+#     encoder.fit(new_df[features])
+
+#         # Transform the features into a one-hot encoded representation
+#     one_hot = encoder.transform(new_df[features]).toarray()
+
+#         # Add the resulting feature vectors to the list
 #     feature_vectors.append(one_hot)
-#
+
 # # Concatenate all the resulting feature vectors into a single array
 # X = np.hstack(feature_vectors)
+

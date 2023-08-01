@@ -135,7 +135,7 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
         # print(related_rows)
         window = get_window(related_rows,index,window_size=window_size)
         window_df = pd.DataFrame({
-            'text': window['text'],
+            # 'text': window['text'],
             'target word': verb,
             'target word phrase id': phrase_id,
             'POS': window['POS'],
