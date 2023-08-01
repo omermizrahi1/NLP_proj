@@ -95,23 +95,23 @@ verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
 grouped = verbs_df.groupby('source')
 list_of_dataframes = [group for _, group in grouped]
 sources = [name for name, _ in grouped]
-
-df_list = []
-for verbs_df,source in zip(list_of_dataframes, sources):
-    path_to_file = os.path.join("tanach", source)
-    tree = ET.parse(path_to_file)
-    root = tree.getroot()
-    for index, row in verbs_df.iterrows():
-        words = get_sentence_words(row, root)
-        info = get_sentence_syntactic_info(row, root)
-        baseform_words = list(filter(baseform_filter, words))
-        for i, word  in enumerate(baseform_words):
-            w = dict_word(word, info, row['sentence id'], row['text'])
-            w['index'] = i
-            df_list.append(pd.DataFrame(w, index=[0]))
-combined_df = pd.concat([df for df in df_list], ignore_index=True)
-combined_df.to_excel('sentences.xlsx', index=False)
-
+#
+# df_list = []
+# for verbs_df,source in zip(list_of_dataframes, sources):
+#     path_to_file = os.path.join("tanach", source)
+#     tree = ET.parse(path_to_file)
+#     root = tree.getroot()
+#     for index, row in verbs_df.iterrows():
+#         words = get_sentence_words(row, root)
+#         info = get_sentence_syntactic_info(row, root)
+#         baseform_words = list(filter(baseform_filter, words))
+#         for i, word  in enumerate(baseform_words):
+#             w = dict_word(word, info, row['sentence id'], row['text'])
+#             w['index'] = i
+#             df_list.append(pd.DataFrame(w, index=[0]))
+# combined_df = pd.concat([df for df in df_list], ignore_index=True)
+# combined_df.to_excel('sentences.xlsx', index=False)
+combined_df = pd.read_excel('sentences.xlsx')
 excel_file_path = 'verbs.xlsx'
 sheet_name = 'Tanach verbs'
 verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
@@ -138,14 +138,11 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
             'text': window['text'],
             'target word': verb,
             'target word phrase id': phrase_id,
-            'phrase id': window['phrase id'],
             'POS': window['POS'],
             'GENDER': window['GENDER'],
             'NUMBER': window['NUMBER'],
             'STATUS': window['STATUS'],
             'function': window['function'],
-            'sentence id': window['sentence id'],
-            'index': window['index'],
             'PERSON': window['PERSON'],
             'TENSE': window['TENSE'],
             'BINYAN': window['BINYAN']
@@ -156,7 +153,7 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
     return result_df
         # print(f'Verb: {verb}, phrase id: {phrase_id}, Related words: {related_rows["text"].tolist()}')
 
-window = 1
+window = 2
 window_df = get_words_by_window(combined_df,verbs_df,window)
 window_df.to_excel(f'window_words_{window}.xlsx', index=False)
 

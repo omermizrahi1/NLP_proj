@@ -38,9 +38,16 @@ for name, group in grouped:
 new_df = new_df[[f'{col}_{i}' for i in range(2*window+1) for col in window_df.columns]]
 
 
+# Find the columns that contain the string 'target word phrase id'
+cols_to_drop = [col for col in new_df.columns if 'target word phrase id' in col]
+
+# Drop the columns from the DataFrame
+new_df = new_df.drop(cols_to_drop, axis=1)
+cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
+new_df = new_df.drop(cols_to_drop, axis=1)
 new_df.to_excel('merged.xlsx', index=False)
-
-
+#
+#
 # feature_combinations = [
 #     ['lemma', 'binyan'],
 #     ['lemma'],
@@ -48,12 +55,6 @@ new_df.to_excel('merged.xlsx', index=False)
 #     ['binyan','number','gender'],
 # ]
 #
-# feature_combinations_for_window = [
-#     ['lemma', 'binyan'],
-#     ['lemma'],
-#     ['lemma','binyan','number','gender'],
-#     ['binyan','number','gender'],
-# ]
 #
 # # Create a list to store the resulting feature vectors
 # feature_vectors = []
