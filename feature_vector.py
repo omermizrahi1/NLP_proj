@@ -1,7 +1,6 @@
 import pds
-from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
-import numpy as np
+
 
 sheet_name = 'Tanach verbs'
 verbs_df = pds.verbs_df
@@ -9,7 +8,6 @@ sentences_df = pds.combined_df
 window_df = pds.window_df
 window = pds.window
 print(f'window: {window}')
-encoder = OneHotEncoder()
 
 
 

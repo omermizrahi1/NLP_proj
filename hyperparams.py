@@ -1,25 +1,12 @@
-from lightgbm import LGBMClassifier
-from matplotlib import pyplot as plt
-import numpy as np
-import pandas as pd
 from sklearn import model_selection
-from sklearn.metrics import accuracy_score, f1_score
-from sklearn.calibration import LabelEncoder
-from sklearn.decomposition import PCA
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.svm import SVC
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 import optuna
-from optuna.samplers import TPESampler, CmaEsSampler
-from lazypredict.Supervised import LazyClassifier
-import numpy as np
+from optuna.samplers import TPESampler
 from model import test_train
 import logging
-from concurrent.futures import ThreadPoolExecutor
 
 
 N_TRIALS = 500

@@ -104,8 +104,6 @@ def binyan_val(filenames):
     binyan_list = list(binyan_values)
     return binyan_list
 
-# POS_vals = pos_val(filenames)
-# print(POS_vals)
+
 all_words(filenames)
 all_verbs(filenames)
-# print(binyan_val(filenames))

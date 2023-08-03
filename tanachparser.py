@@ -1,8 +1,6 @@
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import Element as Element
-import re
 import pandas as pd
-import openpyxl
 from verb import Verb
 import os
 from excel import write_dataframe_to_excel

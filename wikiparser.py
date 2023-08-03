@@ -1,11 +1,9 @@
 import os
-from conllu import parse, parse_incr
+from conllu import parse
 from io import open
 import pandas as pd
-import openpyxl
 from conllu.models import Token as Token
 from verb import Verb
-from openpyxl.utils.dataframe import dataframe_to_rows
 from excel import write_dataframe_to_excel
 
 
