@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 
 directory = "tanach"
 filenames = [os.path.join(directory, f) for f in ["Exodus.xml", "Leviticus.xml", "Numbers.xml"]]
-hebrew_binyans = ["PAAL", "NIFAL", "PUAL", "PAAL", "HIFIL", "HUFAL", "HITPAEL"]
+hebrew_binyans = ['NIFAL', 'PAAL', 'HIFIL', 'PIEL', 'PUAL', 'HITPAEL', 'HUFAL']
 pos_values = ['ADVERB', 'PRONOUN', 'INTERROGATIVE', 'INTERJECTION', 'ADJECTIVE', 'CONJUNCTION', 'NEGATION',
               'PARTICIPLE', 'NOUN', 'PROPERNAME', 'VERB', 'PREPOSITION']
 def all_words(filenames):
@@ -66,7 +66,7 @@ def all_verbs(filenames):
                                     "word": word,
                                     "lemma": lemma,
                                     "phraseid": phrase_id,
-                                    "xml id": xml_id,
+                                    "sentence id": xml_id,
                                     "BINYAN": binyan,
                                     "POS": 'VERB'
                                 }
@@ -88,8 +88,24 @@ def pos_val(filenames):
                         pos_values.add(part.split("_")[-1])
 
     return list(pos_values)
-#
+
+def binyan_val(filenames):
+    binyan_values = set()
+    for filename in filenames:
+        tree = ET.parse(filename)
+        root = tree.getroot()
+        for m in root.findall(".//m"):
+            ana = m.get("ana")
+            if ana:
+                for part in ana.split():
+                    if part.startswith("#BASEFORM_BINYAN_"):
+                        binyan_values.add(part.split("_")[-1])
+
+    binyan_list = list(binyan_values)
+    return binyan_list
+
 # POS_vals = pos_val(filenames)
 # print(POS_vals)
-# all_words(filenames)
+all_words(filenames)
 all_verbs(filenames)
+# print(binyan_val(filenames))
