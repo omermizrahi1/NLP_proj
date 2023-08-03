@@ -1,121 +1,71 @@
-import threading
+
+from lightgbm import LGBMClassifier
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.calibration import _CalibratedClassifier, CalibratedClassifierCV, LabelEncoder, LinearSVC
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, ExtraTreesClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier, RandomForestClassifier, StackingClassifier, VotingClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.linear_model import LogisticRegression, PassiveAggressiveClassifier, Perceptron, SGDClassifier
+from sklearn import model_selection
+from sklearn.metrics import accuracy_score, f1_score
+from sklearn.calibration import LabelEncoder
+from sklearn.decomposition import PCA
+from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier, NearestCentroid, RadiusNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
-from sklearn.semi_supervised import LabelPropagation, LabelSpreading
-from sklearn.svm import SVC, NuSVC
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.svm import SVC
 from xgboost import XGBClassifier
-from catboost import CatBoostClassifier
+from sklearn.model_selection import train_test_split
+from lazypredict.Supervised import LazyClassifier
+import numpy as np
 
 
-glinert = pd.read_excel('merged_glinert.xlsx')
-glinert.replace({None: pd.NA}, inplace=True)
-glinert.drop(columns=['target word_0'], inplace=True)
-# Drop rows where 'glinert' column contains NaN or '-'
-glinert.dropna(subset=['Glinert'], inplace=True)
-glinert = glinert[glinert['Glinert'] != '-']
-# glinert.to_excel('sanity_check.xlsx', index=False)
-glinert.fillna('', inplace=True)
+
+def test_train(method, comb = False):
+    filename = f'merged_comb_{method}.xlsx'
+    if comb:
+        df = pd.read_excel(f'merged_comb_{method}.xlsx')
+    else:
+        df = pd.read_excel(f'merged_{method}.xlsx')
+    df.replace({None: pd.NA}, inplace=True)
+    df.drop(columns=['target word_0'], inplace=True)
+    df.dropna(subset=[method.capitalize()], inplace=True)
+    df = df[df[method.capitalize()] != '-']
+    df.fillna('', inplace=True)
+
+    X = df.iloc[:, :-1]
+    y = df.iloc[:, -1]
+
+    encoder = OneHotEncoder(sparse=False , handle_unknown='ignore')
+    X = X.astype(str)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    encoder.fit(X_train)
+    X_train = encoder.transform(X_train)
+    X_test = encoder.transform(X_test)
+
+    label_encoder = LabelEncoder()
+    y_train = label_encoder.fit_transform(y_train)
+    y_test = label_encoder.fit_transform(y_test)
+    return X_train, X_test, y_train, y_test
 
 
-X = glinert.iloc[:, :-1]
-X.to_excel('X.xlsx', index=False)
-print(f"X size = {X.size}")  # Select all columns except the last one as features
-y = glinert.iloc[:, -1]   # Select only the last column as labels
-print(f"y size = {y.size}")
-# Now, you can proceed with the train-test split as before:
+
+def lazypredict():
+    methods = [('glinert',False), ('blau',False), ('glinert',True), ('blau',True)]
+    for method, comb in methods:
+        X_train, X_test, y_train, y_test = test_train(method, comb)
+        clf = LazyClassifier(verbose=0,ignore_warnings=True, custom_metric=None)
+        models, predictions = clf.fit(X_train, X_test, y_train, y_test)
+        
+        file_path = f"lazypredict_results.txt"
+        try:
+            with open(file_path, 'a+') as file:
+                file.write(f"### models for {method} {'with' if comb == True else 'without'} attribute combination ###\n\n")
+                file.write(f"{models.sort_values(by='Accuracy', ascending=False)}\n\n")
+            print("Data has been appended to the file.")
+        except IOError as e:
+            print(f"An error occurred while writing to the file: {e}")
 
 
-encoder = OneHotEncoder(sparse=False)
-X_encoded = encoder.fit_transform(X)
-
-X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)
 
 
-label_encoder = LabelEncoder()
-# Fit and transform the encoder on your features
-y_train_encoded = label_encoder.fit_transform(y_train)
-y_test_encoded = label_encoder.fit_transform(y_test)
-
-
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
-rf.fit(X_train, y_train_encoded)
-accuracy = rf.score(X_test, y_test_encoded)
-print(accuracy)
-
-
-def train_model(model, X, y, results, lock):
-    name, clf = model
-    clf.fit(X, y)
-    score = clf.score(X_test, y_test_encoded)
-    with lock:
-        results[name] = score
-
-models = [
-    ('LogisticRegression', LogisticRegression(max_iter=15000)), 
-    ('XGBoost', XGBClassifier()),
-    ('KNN', KNeighborsClassifier()),
-    ('RandomForest', RandomForestClassifier()),
-    ('NaiveBayes', GaussianNB()),
-    ('GradientBoosting', GradientBoostingClassifier()),
-    ('AdaBoost', AdaBoostClassifier()),
-    ('Dummy', DummyClassifier()),
-    ('SVC', SVC()),
-    ('MLPClassifier', MLPClassifier()),
-    ('DecisionTreeClassifier', DecisionTreeClassifier()),
-    ('BaggingClassifier', BaggingClassifier()),
-    ('ExtraTreesClassifier', ExtraTreesClassifier()),
-    ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
-    ('QuadraticDiscriminantAnalysis', QuadraticDiscriminantAnalysis()),
-    ('LinearSVC', LinearSVC()),
-    ('SGDClassifier', SGDClassifier()),
-    ('GaussianProcessClassifier', GaussianProcessClassifier()),
-    ('CalibratedClassifierCV', CalibratedClassifierCV()),
-    ('Perceptron', Perceptron()),
-    ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
-    ('VotingClassifier', VotingClassifier(estimators=[('lr', LogisticRegression(max_iter=15000)), ('rf', RandomForestClassifier()), ('gnb', GaussianNB())], voting='hard')),
-    ('LabelPropagation', LabelPropagation()),
-    ('LabelSpreading', LabelSpreading()),
-    ('NearestCentroid', NearestCentroid()),
-    ('HistGradientBoostingClassifier', HistGradientBoostingClassifier()),
-    ('CatBoostClassifier', CatBoostClassifier()),
-    ('StackingClassifier', StackingClassifier(estimators=[('lr', LogisticRegression(max_iter=15000)), ('rf', RandomForestClassifier()), ('gnb', GaussianNB())], final_estimator=LogisticRegression(max_iter=15000)))
-]
-
-results = {}
-lock = threading.Lock()
-
-threads = []
-for model in models:
-    t = threading.Thread(target=train_model, args=(model, X_train, y_train_encoded, results, lock))
-    t.start()
-    threads.append(t)
-
-for t in threads:
-    t.join()
-
-names = [model[0] for model in models]
-
-#some plotting configurations
-x = np.array(range(len(models)))
-plt.figure(figsize=(13,5))
-plt.title('Classification Algorithms Accuracy')
-plt.xlabel('Algorithm')
-plt.ylabel('Prediction accuracy')
-plt.scatter(x, [results[name] for name in names], marker='o', color='red')   
-plt.xticks(x, names, fontsize = 1)
-plt.show()
-
-print({k: v for k, v in sorted(results.items(), key=lambda item: item[1], reverse=True)})
+if __name__ == "__main__":
+    lazypredict()

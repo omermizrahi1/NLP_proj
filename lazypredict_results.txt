@@ -1,0 +1,124 @@
+### models for glinert without attribute combination ###
+
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+LGBMClassifier                     0.53               0.29    None      0.47        0.44
+LogisticRegression                 0.51               0.30    None      0.48        0.51
+LinearSVC                          0.48               0.30    None      0.47        2.23
+CalibratedClassifierCV             0.47               0.26    None      0.40        6.53
+RandomForestClassifier             0.47               0.26    None      0.42        0.32
+SVC                                0.47               0.26    None      0.40        0.17
+PassiveAggressiveClassifier        0.45               0.28    None      0.44        0.16
+XGBClassifier                      0.45               0.26    None      0.41        0.75
+BernoulliNB                        0.45               0.26    None      0.42        0.03
+SGDClassifier                      0.44               0.25    None      0.40        0.07
+BaggingClassifier                  0.44               0.25    None      0.41        0.15
+LinearDiscriminantAnalysis         0.44               0.26    None      0.44        0.80
+RidgeClassifierCV                  0.44               0.26    None      0.42        0.22
+RidgeClassifier                    0.43               0.25    None      0.42        0.06
+Perceptron                         0.42               0.30    None      0.43        0.09
+NearestCentroid                    0.42               0.24    None      0.41        0.07
+KNeighborsClassifier               0.39               0.23    None      0.36        0.13
+ExtraTreesClassifier               0.39               0.22    None      0.35        0.34
+GaussianNB                         0.36               0.24    None      0.36        0.04
+ExtraTreeClassifier                0.36               0.22    None      0.35        0.04
+DecisionTreeClassifier             0.35               0.20    None      0.34        0.06
+DummyClassifier                    0.34               0.20    None      0.18        0.04
+AdaBoostClassifier                 0.29               0.20    None      0.27        0.21
+LabelSpreading                     0.23               0.22    None      0.15        0.07
+LabelPropagation                   0.23               0.22    None      0.15        0.06
+QuadraticDiscriminantAnalysis      0.18               0.21    None      0.16        0.68
+
+### models for blau without attribute combination ###
+
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+LogisticRegression                 0.64               0.27    None      0.61        0.51
+RandomForestClassifier             0.62               0.24    None      0.57        0.33
+BernoulliNB                        0.61               0.26    None      0.59        0.04
+PassiveAggressiveClassifier        0.61               0.26    None      0.59        0.14
+SVC                                0.60               0.22    None      0.51        0.17
+LGBMClassifier                     0.59               0.24    None      0.56        0.38
+ExtraTreesClassifier               0.59               0.24    None      0.56        0.35
+SGDClassifier                      0.59               0.24    None      0.56        0.06
+AdaBoostClassifier                 0.58               0.20    None      0.46        0.39
+BaggingClassifier                  0.58               0.22    None      0.53        0.25
+DummyClassifier                    0.58               0.20    None      0.42        0.04
+XGBClassifier                      0.58               0.24    None      0.55        0.67
+NearestCentroid                    0.58               0.25    None      0.57        0.07
+RidgeClassifierCV                  0.57               0.24    None      0.56        0.19
+CalibratedClassifierCV             0.57               0.20    None      0.45       11.11
+Perceptron                         0.55               0.23    None      0.56        0.07
+LinearSVC                          0.55               0.22    None      0.53        2.24
+KNeighborsClassifier               0.54               0.23    None      0.52        0.06
+DecisionTreeClassifier             0.53               0.23    None      0.52        0.07
+RidgeClassifier                    0.53               0.23    None      0.53        0.08
+LinearDiscriminantAnalysis         0.52               0.22    None      0.55        1.01
+GaussianNB                         0.52               0.25    None      0.49        0.05
+ExtraTreeClassifier                0.49               0.21    None      0.50        0.04
+LabelSpreading                     0.09               0.24    None      0.10        0.06
+QuadraticDiscriminantAnalysis      0.09               0.24    None      0.10        0.79
+LabelPropagation                   0.09               0.24    None      0.10        0.07
+
+### models for glinert with attribute combination ###
+
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+LGBMClassifier                     0.51               0.28    None      0.46        0.42
+SVC                                0.49               0.27    None      0.42        0.15
+RidgeClassifierCV                  0.45               0.28    None      0.44        0.14
+BernoulliNB                        0.45               0.25    None      0.40        0.08
+RandomForestClassifier             0.44               0.24    None      0.38        0.25
+NearestCentroid                    0.44               0.26    None      0.42        0.04
+XGBClassifier                      0.44               0.25    None      0.40        0.97
+CalibratedClassifierCV             0.44               0.24    None      0.38       14.82
+RidgeClassifier                    0.43               0.26    None      0.42        0.07
+SGDClassifier                      0.43               0.24    None      0.39        0.07
+ExtraTreesClassifier               0.43               0.24    None      0.39        0.25
+PassiveAggressiveClassifier        0.42               0.26    None      0.41        0.14
+BaggingClassifier                  0.41               0.24    None      0.38        0.36
+LinearSVC                          0.41               0.25    None      0.40        2.85
+DecisionTreeClassifier             0.41               0.25    None      0.40        0.06
+LogisticRegression                 0.41               0.24    None      0.38        0.25
+AdaBoostClassifier                 0.40               0.23    None      0.34        0.55
+Perceptron                         0.38               0.32    None      0.38        0.07
+LinearDiscriminantAnalysis         0.36               0.21    None      0.35        0.55
+DummyClassifier                    0.34               0.20    None      0.18        0.04
+KNeighborsClassifier               0.34               0.18    None      0.30        0.05
+ExtraTreeClassifier                0.33               0.20    None      0.33        0.04
+GaussianNB                         0.33               0.20    None      0.32        0.04
+LabelSpreading                     0.23               0.22    None      0.15        0.06
+LabelPropagation                   0.23               0.22    None      0.15        0.06
+QuadraticDiscriminantAnalysis      0.22               0.21    None      0.15        0.36
+
+### models for blau with attribute combination ###
+
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+SVC                                0.62               0.23    None      0.53        0.16
+RandomForestClassifier             0.60               0.24    None      0.56        0.33
+LGBMClassifier                     0.59               0.24    None      0.56        0.45
+LogisticRegression                 0.59               0.25    None      0.57        0.31
+BaggingClassifier                  0.58               0.23    None      0.54        0.25
+DummyClassifier                    0.58               0.20    None      0.42        0.03
+AdaBoostClassifier                 0.58               0.20    None      0.42        0.33
+CalibratedClassifierCV             0.58               0.20    None      0.44       11.43
+ExtraTreesClassifier               0.57               0.23    None      0.54        0.26
+XGBClassifier                      0.57               0.23    None      0.54        0.89
+PassiveAggressiveClassifier        0.56               0.24    None      0.54        0.13
+LinearSVC                          0.56               0.24    None      0.54        3.00
+BernoulliNB                        0.56               0.24    None      0.54        0.05
+SGDClassifier                      0.55               0.22    None      0.52        0.07
+GaussianNB                         0.55               0.25    None      0.53        0.04
+Perceptron                         0.54               0.22    None      0.53        0.07
+NearestCentroid                    0.54               0.23    None      0.52        0.05
+LinearDiscriminantAnalysis         0.53               0.23    None      0.52        0.54
+RidgeClassifier                    0.53               0.23    None      0.52        0.06
+KNeighborsClassifier               0.52               0.20    None      0.48        0.05
+RidgeClassifierCV                  0.51               0.22    None      0.50        0.14
+DecisionTreeClassifier             0.45               0.20    None      0.46        0.07
+ExtraTreeClassifier                0.45               0.20    None      0.46        0.04
+LabelSpreading                     0.09               0.24    None      0.10        0.06
+LabelPropagation                   0.09               0.24    None      0.10        0.05
+QuadraticDiscriminantAnalysis      0.08               0.24    None      0.10        0.41
+

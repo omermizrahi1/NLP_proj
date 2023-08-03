@@ -1,20 +1,19 @@
-import pds
-from sklearn.preprocessing import OneHotEncoder
+
+import pdsWiki
 import pandas as pd
-import numpy as np
 
 
-verbs_df = pds.verbs_df
-sentences_df = pds.combined_df
-window_df = pds.window_df
-window = pds.window
+sheet_name = 'Wiki verbs'
+verbs_df = pdsWiki.verbs_df
+sentences_df = pdsWiki.combined_df
+window_df = pdsWiki.window_df
+window = pdsWiki.window
 print(f'window: {window}')
-encoder = OneHotEncoder()
 
 
 
 # Group the rows by 'target word phrase id'
-grouped = window_df.groupby('target word phrase id')
+grouped = window_df.groupby(['target word index', 'SENTENCE ID'])
 
 # Create a new DataFrame to store the concatenated rows
 new_df = pd.DataFrame()
@@ -39,49 +38,53 @@ new_df = new_df[[f'{col}_{i}' for i in range(2*window+1) for col in window_df.co
 
 
 # Find the columns that contain the string 'target word phrase id'
-cols_to_drop = [col for col in new_df.columns if 'target word phrase id' in col]
+cols_to_drop = [col for col in new_df.columns if 'target word index' in col]
 
 # Drop the columns from the DataFrame
 new_df = new_df.drop(cols_to_drop, axis=1)
-cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
+
+cols_to_drop = [col for col in new_df.columns if 'SENTENCE ID' in col]
 new_df = new_df.drop(cols_to_drop, axis=1)
+
+cols_to_drop = [col for col in new_df.columns if 'LEMMA' in col]
+new_df = new_df.drop(cols_to_drop, axis=1)
+
+cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
+
+new_df = new_df.drop(cols_to_drop, axis=1)
+
+
+comb_df = new_df
+
+# Create the combinations of features for each i value
+for i in range(5):
+    comb_df[f'lemma_morphological_{i}'] = comb_df[f'POS_{i}'] + '' + comb_df[f'GENDER_{i}'] + '' + comb_df[f'NUMBER_{i}'] + '' + comb_df[f'BINYAN_{i}']
+    # df[f'lemma_syntactic_{i}'] = df[f'target word_{i}'] + '' + df[f'function_{i}']
+    comb_df[f'lemma_morphological_syntactic_{i}'] = comb_df[f'POS_{i}'] + '' + comb_df[f'GENDER_{i}'] + '' + comb_df[f'NUMBER_{i}'] + '' + comb_df[f'BINYAN_{i}'] + '' + comb_df[f'SYNTACTIC ATTRIBUTES_{i}']
+    # df[f'lemma_part_of_speech_{i}'] = df[f'target word_{i}'] + '' + df[f'POS_{i}']
+    comb_df[f'morphological_syntactic_{i}'] = comb_df[f'POS_{i}'] + '' + comb_df[f'GENDER_{i}'] + '' + comb_df[f'NUMBER_{i}'] + '' + comb_df[f'BINYAN_{i}'] + '' + comb_df[f'SYNTACTIC ATTRIBUTES_{i}']
+    comb_df[f'part_of_speech_syntactic_{i}'] = comb_df[f'POS_{i}'] + '' + comb_df[f'SYNTACTIC ATTRIBUTES_{i}']
+
+# Create a list of the feature combination columns
+feature_combination_columns = [f'{col}_{i}' for col in ['lemma_morphological','lemma_morphological_syntactic', 'morphological_syntactic', 'part_of_speech_syntactic'] for i in range(5)]
+
+
+new_df_glinert = new_df.copy()
+new_df_blau = new_df.copy()
+comb_df_glinert = comb_df.copy()
+comb_df_blau = comb_df.copy()
+
+tagged_verbs = pd.read_excel('tagged_verbs.xlsx', sheet_name=sheet_name)
+glinert_column = tagged_verbs['Glinert']
+blau_column = tagged_verbs['Blau']
+
+new_df_glinert = pd.concat([new_df_glinert, glinert_column], axis=1)
+new_df_blau = pd.concat([new_df_blau, blau_column], axis=1)
+comb_df_glinert = pd.concat([comb_df_glinert, glinert_column], axis=1)
+comb_df_blau = pd.concat([comb_df_blau, blau_column], axis=1)
+
 new_df.to_excel('merged.xlsx', index=False)
-
-
-
-# למה + מורפולוגי
-# למה + תחבירי
-# למה + מורפולוגי + תחבירי
-# למה + חלק דיבר
-# מורפולוגי + תחבירי
-# חלק דיבר + תחבירי
-# feature_vectors = []
-# feature_combinations = []
-# for i in range(2*window + 1):
-#     feature_combinations += [
-#         [f'POS_{i}', f'NUMBER_{i}'],
-#         [f'POS_{i}',f'TENSE_{i}',f'FUNCTION_{i}'],
-#         [f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}'],
-#         [f'TENSE_{i}',f'NUMBER_{i}',f'FUNCTION_{i}'],
-#         [f'POS_{i}',f'NUMBER_{i}',f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}'],
-#         [f'POS_{i}',f'NUMBER_{i}',f'STATUS_{i}',f'FUNCTION_{i}',f'BINYAN{i}',f'TENSE_{i}'],
-#     ]
-
-
-# print(feature_combinations)
-# # # Create a list to store the resulting feature vectors
-
-# # # Iterate over the feature combinations
-# for features in feature_combinations:
-#         # Fit the encoder on the current feature combination
-#     encoder.fit(new_df[features])
-
-#         # Transform the features into a one-hot encoded representation
-#     one_hot = encoder.transform(new_df[features]).toarray()
-
-#         # Add the resulting feature vectors to the list
-#     feature_vectors.append(one_hot)
-
-# # Concatenate all the resulting feature vectors into a single array
-# X = np.hstack(feature_vectors)
-
+new_df_glinert.to_excel('merged_glinert.xlsx', index=False)
+new_df_blau.to_excel('merged_blau.xlsx', index=False)
+comb_df_glinert.to_excel('merged_comb_glinert.xlsx', index=False)
+comb_df_blau.to_excel('merged_comb_blau.xlsx', index=False)
