@@ -46,7 +46,7 @@ cols_to_drop = [col for col in new_df.columns if 'target word' in col and col !=
 new_df = new_df.drop(cols_to_drop, axis=1)
 
 
-comb_df = new_df
+comb_df = new_df.copy()
 
 # Create the combinations of features for each i value
 for i in range(5):
