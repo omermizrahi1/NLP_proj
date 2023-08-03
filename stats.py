@@ -25,6 +25,10 @@ def to_df(word):
     except:
         lemma=None
     try:
+        pos = word['upos']
+    except:
+        pos=None
+    try:
         binyan= word['feats']['HebBinyan']
     except:
         binyan=None
@@ -53,6 +57,7 @@ def to_df(word):
         'id': id,
         'text': text,
         'lemma': lemma,
+        'pos': pos,
         'binyan': binyan,
         'number': number,
         'gender': gender,
@@ -97,5 +102,7 @@ for sentence, src in sent_list:
         df_list.append(df)
 
 combined_df = pd.concat([df for df in df_list], ignore_index=True)
-combined_df.to_excel('wiki verbs.xlsx', index=False)
+verbs_df = combined_df[combined_df['pos'] == 'VERB']
+combined_df.to_excel('wiki_words.xlsx', index=False)
+verbs_df.to_excel('wiki_verbs.xlsx', index=False)
 

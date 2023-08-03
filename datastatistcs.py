@@ -2,11 +2,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def read_dataframes():
-    all_words_df = pd.read_excel('all_words.xlsx')
-    all_verbs_df = pd.read_excel('all_verbs.xlsx')
-    tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx')
-    verbs_df = pd.read_excel('verbs.xlsx')
-    return all_words_df,all_verbs_df,tagged_verbs_df,verbs_df
+    tanach_words_df = pd.read_excel('tanach_words.xlsx')
+    tanach_verbs_df = pd.read_excel('tanach_verbs.xlsx')
+    tanach_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Tancah verbs')
+    tanach_nifal_df = pd.read_excel('verbs.xlsx', sheet_name='Tancah verbs')
+    wiki_words_df = pd.read_excel('wiki_words.xlsx')
+    wiki_verbs_df = pd.read_excel('wiki_verbs.xlsx')
+    wiki_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Wiki verbs')
+    # wiki_nifal_df = pd.read_excel('verbs.xlsx', sheet_name='Tancah verbs')
+
+    return tanach_words_df,tanach_verbs_df,tanach_tagged_verbs_df,tanach_nifal_df
 # Calculate the total number of words
 all_words_df,all_verbs_df,tagged_verbs_df,verbs_df = read_dataframes()
 total_words = len(all_words_df)

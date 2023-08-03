@@ -22,7 +22,7 @@ import numpy as np
 
 
 def test_train(method, comb = False):
-
+    filename = f'merged_comb_{method}.xlsx'
     if comb:
         df = pd.read_excel(f'merged_comb_{method}.xlsx')
     else:

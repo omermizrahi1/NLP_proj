@@ -22,6 +22,8 @@ import logging
 from concurrent.futures import ThreadPoolExecutor
 
 
+N_TRIALS = 500
+
 def xgb_objective(trial):
     xgb_params = {
         "n_estimators": 1000,
@@ -79,19 +81,28 @@ if __name__ == "__main__":
 ]
     for method, comb, objective in methods:
         logger = logging.getLogger()
-        logger.setLevel(logging.INFO)  # Setup the root logger.
+        logger.setLevel(logging.INFO)  
         log_file_name = f"optuna_{method}_{'with' if comb == True else 'without'}_combinations.log"
-        logger.addHandler(logging.FileHandler(log_file_name, mode="a"))
+        logger.addHandler(logging.FileHandler(f'logs\\{log_file_name}', mode="a"))
 
-        optuna.logging.enable_propagation()  # Propagate logs to the root logger.
-        optuna.logging.disable_default_handler()  # Stop showing logs in sys.stderr.
-
+        optuna.logging.enable_propagation()
+        optuna.logging.disable_default_handler()
+        
         X_train, X_test, y_train, y_test = test_train(method, comb)
         study = optuna.create_study(direction="maximize", sampler=TPESampler())
         logger.info("Start optimization.")
-        study.optimize(objective, n_trials=500)
+        study.optimize(objective, n_trials=N_TRIALS)
 
         with open(log_file_name) as f:
             assert f.readline().startswith("A new study created")
             assert f.readline() == "Start optimization.\n"
+        for handler in logger.handlers:
+            handler.close()
+            logger.removeHandler(handler)
+
+
+
+
+
+
 

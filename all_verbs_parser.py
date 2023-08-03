@@ -44,7 +44,7 @@ def all_words(filenames):
                                 data.append(row)
 
     df = pd.DataFrame(data)
-    df.to_excel('all_words.xlsx', index=False)
+    df.to_excel('tanach_words.xlsx', index=False)
 
 def all_verbs(filenames):
     data = []
@@ -73,7 +73,7 @@ def all_verbs(filenames):
                                 if row not in data:
                                     data.append(row)
     df = pd.DataFrame(data)
-    df.to_excel('all_verbs.xlsx', index=False)
+    df.to_excel('tanach_verbs.xlsx', index=False)
 
 def pos_val(filenames):
     pos_values = set()
