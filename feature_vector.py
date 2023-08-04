@@ -12,8 +12,18 @@ print(f'window: {window}')
 
 
 
-# Group the rows by 'target word phrase id'
-grouped = window_df.groupby(['target word index', 'SENTENCE ID'])
+# Split the 'SENTENCE ID' column into a prefix (all the parts before the last hyphen)
+# and a suffix (the part after the last hyphen)
+window_df[['SENTENCE ID Text', 'SENTENCE ID Number']] = window_df['SENTENCE ID'].str.rsplit('-', n=1, expand=True)
+
+# Convert the suffix to integers for correct sorting
+window_df['SENTENCE ID Number'] = window_df['SENTENCE ID Number'].astype(int)
+
+# Sort by the numerical part of 'SENTENCE ID' and 'target word index'
+window_df = window_df.sort_values(['SENTENCE ID Text', 'SENTENCE ID Number', 'target word index'])
+
+# Now group by the original 'SENTENCE ID' column and 'target word index'
+grouped = window_df.groupby(['SENTENCE ID', 'target word index'])
 
 # Create a new DataFrame to store the concatenated rows
 new_df = pd.DataFrame()
@@ -42,19 +52,12 @@ cols_to_drop = [col for col in new_df.columns if 'target word index' in col]
 
 # Drop the columns from the DataFrame
 new_df = new_df.drop(cols_to_drop, axis=1)
-
-cols_to_drop = [col for col in new_df.columns if 'SENTENCE ID' in col]
-new_df = new_df.drop(cols_to_drop, axis=1)
-
-cols_to_drop = [col for col in new_df.columns if 'LEMMA' in col]
-new_df = new_df.drop(cols_to_drop, axis=1)
-
 cols_to_drop = [col for col in new_df.columns if 'target word' in col and col != 'target word_0']
 
 new_df = new_df.drop(cols_to_drop, axis=1)
 
 
-comb_df = new_df
+comb_df = new_df.copy()
 
 # Create the combinations of features for each i value
 for i in range(5):
@@ -67,6 +70,8 @@ for i in range(5):
 
 # Create a list of the feature combination columns
 feature_combination_columns = [f'{col}_{i}' for col in ['lemma_morphological','lemma_morphological_syntactic', 'morphological_syntactic', 'part_of_speech_syntactic'] for i in range(5)]
+
+
 
 
 new_df_glinert = new_df.copy()
@@ -82,6 +87,31 @@ new_df_glinert = pd.concat([new_df_glinert, glinert_column], axis=1)
 new_df_blau = pd.concat([new_df_blau, blau_column], axis=1)
 comb_df_glinert = pd.concat([comb_df_glinert, glinert_column], axis=1)
 comb_df_blau = pd.concat([comb_df_blau, blau_column], axis=1)
+
+# First sort the dataframe by 'SENTENCE ID Text_0' and 'SENTENCE ID Number_0'
+new_df = new_df.sort_values(by=['SENTENCE ID Text_0', 'SENTENCE ID Number_0'])
+
+# Now drop the unnecessary columns
+for i in range(11):
+    new_df = new_df.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
+
+# Repeat the same process for other dataframes
+new_df_glinert = new_df_glinert.sort_values(by=['SENTENCE ID Text_0', 'SENTENCE ID Number_0'])
+for i in range(11):
+    new_df_glinert = new_df_glinert.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
+
+new_df_blau = new_df_blau.sort_values(by=['SENTENCE ID Text_0', 'SENTENCE ID Number_0'])
+for i in range(11):
+    new_df_blau = new_df_blau.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
+
+comb_df_glinert = comb_df_glinert.sort_values(by=['SENTENCE ID Text_0', 'SENTENCE ID Number_0'])
+for i in range(11):
+    comb_df_glinert = comb_df_glinert.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
+
+comb_df_blau = comb_df_blau.sort_values(by=['SENTENCE ID Text_0', 'SENTENCE ID Number_0'])
+for i in range(11):
+    comb_df_blau = comb_df_blau.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
+
 
 new_df.to_excel('merged.xlsx', index=False)
 new_df_glinert.to_excel('merged_glinert.xlsx', index=False)

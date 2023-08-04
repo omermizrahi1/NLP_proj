@@ -1,0 +1,326 @@
+A new study created in memory with name: no-name-aeda7700-bb32-4f24-9ba6-313b515daabf
+Start optimization.
+A new study created in memory with name: no-name-04f0a481-7a2b-4285-bc59-cfef1ee1ff27
+Start optimization.
+Trial 0 finished with value: 0.38565789473684214 and parameters: {'learning_rate': 0.0013466415224156585, 'max_depth': 1, 'subsample': 0.5798663991759686, 'colsample_bytree': 0.7185293450941845, 'min_child_samples': 84}. Best is trial 0 with value: 0.38565789473684214.
+Trial 1 failed with parameters: {'learning_rate': 0.0015238250619857994, 'max_depth': 2, 'subsample': 0.10537480861608578, 'colsample_bytree': 0.30196756836909733, 'min_child_samples': 37} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 975, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\_parallel_backends.py", line 567, in wrap_future_result
+    return future.result(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\concurrent\futures\_base.py", line 451, in result
+    self._condition.wait(timeout)
+  File "C:\Python311\Lib\threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\artur\AppData\Roaming\Python\Python311\site-packages\optuna\study\_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "c:\Users\artur\OneDrive\Desktop\University\NLP\NLP-Project\NLP_proj\hyperparams.py", line 41, in lgbm_objective
+    score = model_selection.cross_val_score(clf, X_train, y_train, n_jobs=-1, cv=20)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 515, in cross_val_score
+    cv_results = cross_validate(
+                 ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 266, in cross_validate
+    results = parallel(
+              ^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\utils\parallel.py", line 63, in __call__
+    return super().__call__(iterable_with_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 1098, in __call__
+    self.retrieve()
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 997, in retrieve
+    backend.abort_everything(ensure_ready=ensure_ready)
+  File "C:\Python311\Lib\site-packages\joblib\_parallel_backends.py", line 586, in abort_everything
+    self._workers.terminate(kill_workers=True)
+  File "C:\Python311\Lib\site-packages\joblib\executor.py", line 74, in terminate
+    self.shutdown(kill_workers=kill_workers)
+  File "C:\Python311\Lib\site-packages\joblib\externals\loky\process_executor.py", line 1199, in shutdown
+    executor_manager_thread.join()
+  File "C:\Python311\Lib\threading.py", line 1112, in join
+    self._wait_for_tstate_lock()
+  File "C:\Python311\Lib\threading.py", line 1132, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Trial 1 failed with value None.
+A new study created in memory with name: no-name-a3affbc7-221e-45f3-9c54-36ee93992b31
+Start optimization.
+Trial 0 finished with value: 0.4030263157894736 and parameters: {'learning_rate': 0.005413937312774601, 'max_depth': 5, 'subsample': 0.543909575590145, 'colsample_bytree': 0.3580076155953514, 'min_child_samples': 90}. Best is trial 0 with value: 0.4030263157894736.
+Trial 1 finished with value: 0.4026315789473684 and parameters: {'learning_rate': 0.004664307237624139, 'max_depth': 1, 'subsample': 0.15595616402623874, 'colsample_bytree': 0.8297867162347781, 'min_child_samples': 28}. Best is trial 0 with value: 0.4030263157894736.
+Trial 2 failed with parameters: {'learning_rate': 0.06108180007772701, 'max_depth': 2, 'subsample': 0.9021846938487813, 'colsample_bytree': 0.5995079957438811, 'min_child_samples': 40} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 975, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\_parallel_backends.py", line 567, in wrap_future_result
+    return future.result(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\concurrent\futures\_base.py", line 451, in result
+    self._condition.wait(timeout)
+  File "C:\Python311\Lib\threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\artur\AppData\Roaming\Python\Python311\site-packages\optuna\study\_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "c:\Users\artur\OneDrive\Desktop\University\NLP\NLP-Project\NLP_proj\hyperparams.py", line 41, in lgbm_objective
+    score = model_selection.cross_val_score(clf, X_train, y_train, n_jobs=-1, cv=20)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 515, in cross_val_score
+    cv_results = cross_validate(
+                 ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 266, in cross_validate
+    results = parallel(
+              ^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\utils\parallel.py", line 63, in __call__
+    return super().__call__(iterable_with_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 1098, in __call__
+    self.retrieve()
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 997, in retrieve
+    backend.abort_everything(ensure_ready=ensure_ready)
+  File "C:\Python311\Lib\site-packages\joblib\_parallel_backends.py", line 586, in abort_everything
+    self._workers.terminate(kill_workers=True)
+  File "C:\Python311\Lib\site-packages\joblib\executor.py", line 74, in terminate
+    self.shutdown(kill_workers=kill_workers)
+  File "C:\Python311\Lib\site-packages\joblib\externals\loky\process_executor.py", line 1199, in shutdown
+    executor_manager_thread.join()
+  File "C:\Python311\Lib\threading.py", line 1112, in join
+    self._wait_for_tstate_lock()
+  File "C:\Python311\Lib\threading.py", line 1132, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Trial 2 failed with value None.
+A new study created in memory with name: no-name-dbae66f3-2902-4aac-b729-2ad509407792
+Start optimization.
+Trial 0 finished with value: 0.3768421052631579 and parameters: {'learning_rate': 0.005198845384577068, 'max_depth': 9, 'subsample': 0.6766608577457411, 'colsample_bytree': 0.10967306540134276, 'min_child_samples': 35}. Best is trial 0 with value: 0.3768421052631579.
+Trial 1 finished with value: 0.38697368421052636 and parameters: {'learning_rate': 0.0026892361545471266, 'max_depth': 9, 'subsample': 0.5397813254350027, 'colsample_bytree': 0.11416133292655765, 'min_child_samples': 33}. Best is trial 1 with value: 0.38697368421052636.
+Trial 2 finished with value: 0.37486842105263163 and parameters: {'learning_rate': 0.007049736154033995, 'max_depth': 3, 'subsample': 0.42010059162227364, 'colsample_bytree': 0.7430612615490242, 'min_child_samples': 43}. Best is trial 1 with value: 0.38697368421052636.
+Trial 3 finished with value: 0.3675 and parameters: {'learning_rate': 0.09264718857543576, 'max_depth': 9, 'subsample': 0.7692073881442429, 'colsample_bytree': 0.7680769497135571, 'min_child_samples': 59}. Best is trial 1 with value: 0.38697368421052636.
+Trial 4 finished with value: 0.3826315789473684 and parameters: {'learning_rate': 0.021911973989394515, 'max_depth': 8, 'subsample': 0.9103919069511852, 'colsample_bytree': 0.8264232167633416, 'min_child_samples': 68}. Best is trial 1 with value: 0.38697368421052636.
+Trial 5 finished with value: 0.3530263157894737 and parameters: {'learning_rate': 0.0685004417682788, 'max_depth': 6, 'subsample': 0.2733536591640016, 'colsample_bytree': 0.26751588222928097, 'min_child_samples': 16}. Best is trial 1 with value: 0.38697368421052636.
+Trial 6 finished with value: 0.3653947368421052 and parameters: {'learning_rate': 0.022638703284984924, 'max_depth': 4, 'subsample': 0.2573877538573561, 'colsample_bytree': 0.07238235525177572, 'min_child_samples': 13}. Best is trial 1 with value: 0.38697368421052636.
+Trial 7 finished with value: 0.4077631578947368 and parameters: {'learning_rate': 0.00133363480101412, 'max_depth': 8, 'subsample': 0.47099197857859987, 'colsample_bytree': 0.08116734703942449, 'min_child_samples': 68}. Best is trial 7 with value: 0.4077631578947368.
+Trial 8 finished with value: 0.3546052631578947 and parameters: {'learning_rate': 0.005903976206792226, 'max_depth': 4, 'subsample': 0.15237603886964063, 'colsample_bytree': 0.250776852969339, 'min_child_samples': 31}. Best is trial 7 with value: 0.4077631578947368.
+Trial 9 finished with value: 0.36500000000000005 and parameters: {'learning_rate': 0.08866385559475594, 'max_depth': 8, 'subsample': 0.9889837242345837, 'colsample_bytree': 0.32438383940689597, 'min_child_samples': 27}. Best is trial 7 with value: 0.4077631578947368.
+Trial 10 finished with value: 0.4030263157894737 and parameters: {'learning_rate': 0.0012726262165126542, 'max_depth': 1, 'subsample': 0.4672246817870348, 'colsample_bytree': 0.5454599105081664, 'min_child_samples': 92}. Best is trial 7 with value: 0.4077631578947368.
+Trial 11 finished with value: 0.40026315789473693 and parameters: {'learning_rate': 0.0010474439636266697, 'max_depth': 1, 'subsample': 0.48321302174722863, 'colsample_bytree': 0.5289436191568698, 'min_child_samples': 98}. Best is trial 7 with value: 0.4077631578947368.
+Trial 12 finished with value: 0.390921052631579 and parameters: {'learning_rate': 0.001064348983074941, 'max_depth': 6, 'subsample': 0.41635388961400843, 'colsample_bytree': 0.5133022435272216, 'min_child_samples': 89}. Best is trial 7 with value: 0.4077631578947368.
+Trial 13 finished with value: 0.4161842105263158 and parameters: {'learning_rate': 0.0020967138045449854, 'max_depth': 1, 'subsample': 0.5845680305795041, 'colsample_bytree': 0.979264103438762, 'min_child_samples': 77}. Best is trial 13 with value: 0.4161842105263158.
+Trial 14 finished with value: 0.3927631578947368 and parameters: {'learning_rate': 0.00236567986597831, 'max_depth': 7, 'subsample': 0.5924586646092037, 'colsample_bytree': 0.9972698543719143, 'min_child_samples': 73}. Best is trial 13 with value: 0.4161842105263158.
+Trial 15 finished with value: 0.3910526315789473 and parameters: {'learning_rate': 0.002382591041701715, 'max_depth': 3, 'subsample': 0.6873943113083157, 'colsample_bytree': 0.9925954440329569, 'min_child_samples': 79}. Best is trial 13 with value: 0.4161842105263158.
+Trial 16 finished with value: 0.3698684210526316 and parameters: {'learning_rate': 0.001906176868337741, 'max_depth': 10, 'subsample': 0.34925833984665544, 'colsample_bytree': 0.42040491426200394, 'min_child_samples': 52}. Best is trial 13 with value: 0.4161842105263158.
+Trial 17 finished with value: 0.3877631578947368 and parameters: {'learning_rate': 0.0037022974365557093, 'max_depth': 2, 'subsample': 0.07321820515521887, 'colsample_bytree': 0.6097612058487822, 'min_child_samples': 63}. Best is trial 13 with value: 0.4161842105263158.
+Trial 18 finished with value: 0.4007894736842106 and parameters: {'learning_rate': 0.0016352981059613674, 'max_depth': 5, 'subsample': 0.5795953102286894, 'colsample_bytree': 0.39272583300879804, 'min_child_samples': 82}. Best is trial 13 with value: 0.4161842105263158.
+Trial 19 finished with value: 0.3698684210526316 and parameters: {'learning_rate': 0.0035678679662205118, 'max_depth': 7, 'subsample': 0.3378765941647703, 'colsample_bytree': 0.6524845607707566, 'min_child_samples': 52}. Best is trial 13 with value: 0.4161842105263158.
+Trial 20 finished with value: 0.39249999999999996 and parameters: {'learning_rate': 0.0015566473504132802, 'max_depth': 5, 'subsample': 0.8072636777583531, 'colsample_bytree': 0.19112471766123207, 'min_child_samples': 77}. Best is trial 13 with value: 0.4161842105263158.
+Trial 21 finished with value: 0.4102631578947369 and parameters: {'learning_rate': 0.0010048776853061997, 'max_depth': 1, 'subsample': 0.48624499725037, 'colsample_bytree': 0.4096334381840302, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 22 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.0010889479715632923, 'max_depth': 2, 'subsample': 0.5952720643473707, 'colsample_bytree': 0.40329488541340996, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 23 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.001024543339958836, 'max_depth': 2, 'subsample': 0.6072108660290356, 'colsample_bytree': 0.43329099952858807, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 24 finished with value: 0.3956578947368421 and parameters: {'learning_rate': 0.0017037533913256847, 'max_depth': 2, 'subsample': 0.6413973157484453, 'colsample_bytree': 0.4507058037412416, 'min_child_samples': 89}. Best is trial 13 with value: 0.4161842105263158.
+Trial 25 finished with value: 0.3746052631578947 and parameters: {'learning_rate': 0.0019506969258605332, 'max_depth': 2, 'subsample': 0.5992118554294292, 'colsample_bytree': 0.3235357859846487, 'min_child_samples': 1}. Best is trial 13 with value: 0.4161842105263158.
+Trial 26 finished with value: 0.4034210526315789 and parameters: {'learning_rate': 0.0013757690734439486, 'max_depth': 3, 'subsample': 0.5435389943554, 'colsample_bytree': 0.4779978494719353, 'min_child_samples': 84}. Best is trial 13 with value: 0.4161842105263158.
+Trial 27 finished with value: 0.38539473684210523 and parameters: {'learning_rate': 0.0030371046813909173, 'max_depth': 2, 'subsample': 0.6806986866433744, 'colsample_bytree': 0.36282892995532245, 'min_child_samples': 95}. Best is trial 13 with value: 0.4161842105263158.
+Trial 28 finished with value: 0.390921052631579 and parameters: {'learning_rate': 0.0010114626864794732, 'max_depth': 4, 'subsample': 0.7552746824316497, 'colsample_bytree': 0.5951128449100157, 'min_child_samples': 87}. Best is trial 13 with value: 0.4161842105263158.
+Trial 29 finished with value: 0.4030263157894737 and parameters: {'learning_rate': 0.004417264981135497, 'max_depth': 1, 'subsample': 0.6443765991173893, 'colsample_bytree': 0.4607170054991782, 'min_child_samples': 94}. Best is trial 13 with value: 0.4161842105263158.
+Trial 30 finished with value: 0.39802631578947373 and parameters: {'learning_rate': 0.0022087710658640443, 'max_depth': 3, 'subsample': 0.7217957064808725, 'colsample_bytree': 0.8750916781782287, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 31 finished with value: 0.4128947368421053 and parameters: {'learning_rate': 0.0010051764708919936, 'max_depth': 1, 'subsample': 0.5578347573455256, 'colsample_bytree': 0.41313967225355486, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 32 finished with value: 0.4060526315789474 and parameters: {'learning_rate': 0.0014935406491535378, 'max_depth': 2, 'subsample': 0.5467284091659995, 'colsample_bytree': 0.48187722890279977, 'min_child_samples': 84}. Best is trial 13 with value: 0.4161842105263158.
+Trial 33 finished with value: 0.40815789473684205 and parameters: {'learning_rate': 0.0027979207886200397, 'max_depth': 1, 'subsample': 0.6307954544707305, 'colsample_bytree': 0.6770245372702105, 'min_child_samples': 93}. Best is trial 13 with value: 0.4161842105263158.
+Trial 34 finished with value: 0.37223684210526314 and parameters: {'learning_rate': 0.0018831720359864163, 'max_depth': 2, 'subsample': 0.5379541922769536, 'colsample_bytree': 0.5639272968941673, 'min_child_samples': 75}. Best is trial 13 with value: 0.4161842105263158.
+Trial 35 finished with value: 0.3622368421052632 and parameters: {'learning_rate': 0.0013263777009214228, 'max_depth': 1, 'subsample': 0.5880842283685319, 'colsample_bytree': 0.36341644591853006, 'min_child_samples': 43}. Best is trial 13 with value: 0.4161842105263158.
+Trial 36 finished with value: 0.3826315789473684 and parameters: {'learning_rate': 0.002404301244403108, 'max_depth': 3, 'subsample': 0.6971083073422116, 'colsample_bytree': 0.4988411579281617, 'min_child_samples': 70}. Best is trial 13 with value: 0.4161842105263158.
+Trial 37 finished with value: 0.35973684210526324 and parameters: {'learning_rate': 0.0012859252154976406, 'max_depth': 2, 'subsample': 0.8235528709478599, 'colsample_bytree': 0.7497009802881637, 'min_child_samples': 63}. Best is trial 13 with value: 0.4161842105263158.
+Trial 38 finished with value: 0.4003947368421053 and parameters: {'learning_rate': 0.0030625033341263874, 'max_depth': 3, 'subsample': 0.6403458296099969, 'colsample_bytree': 0.43022485020800183, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 39 finished with value: 0.3978947368421053 and parameters: {'learning_rate': 0.0018326422752858026, 'max_depth': 1, 'subsample': 0.7306251103571504, 'colsample_bytree': 0.19423053246595406, 'min_child_samples': 88}. Best is trial 13 with value: 0.4161842105263158.
+Trial 40 finished with value: 0.3703947368421052 and parameters: {'learning_rate': 0.008808267539002844, 'max_depth': 4, 'subsample': 0.5124375327654684, 'colsample_bytree': 0.6696641650506375, 'min_child_samples': 80}. Best is trial 13 with value: 0.4161842105263158.
+Trial 41 finished with value: 0.39499999999999996 and parameters: {'learning_rate': 0.0010701878149079079, 'max_depth': 1, 'subsample': 0.43981277319761564, 'colsample_bytree': 0.39193507488761525, 'min_child_samples': 96}. Best is trial 13 with value: 0.4161842105263158.
+Trial 42 finished with value: 0.41302631578947374 and parameters: {'learning_rate': 0.0010274929506834166, 'max_depth': 1, 'subsample': 0.5081146700678745, 'colsample_bytree': 0.4413739720021793, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 43 finished with value: 0.39552631578947367 and parameters: {'learning_rate': 0.0013709922879652791, 'max_depth': 2, 'subsample': 0.5594337872762406, 'colsample_bytree': 0.4529024207689813, 'min_child_samples': 92}. Best is trial 13 with value: 0.4161842105263158.
+Trial 44 finished with value: 0.39013157894736844 and parameters: {'learning_rate': 0.0012284993477723332, 'max_depth': 1, 'subsample': 0.5213989996997056, 'colsample_bytree': 0.5234469427280648, 'min_child_samples': 96}. Best is trial 13 with value: 0.4161842105263158.
+Trial 45 finished with value: 0.4038157894736842 and parameters: {'learning_rate': 0.001004747663573311, 'max_depth': 2, 'subsample': 0.6126265712493545, 'colsample_bytree': 0.5582049966806916, 'min_child_samples': 86}. Best is trial 13 with value: 0.4161842105263158.
+Trial 46 finished with value: 0.3976315789473684 and parameters: {'learning_rate': 0.0015348817558373082, 'max_depth': 1, 'subsample': 0.5149910246634175, 'colsample_bytree': 0.3229936513804872, 'min_child_samples': 91}. Best is trial 13 with value: 0.4161842105263158.
+Trial 47 finished with value: 0.39552631578947367 and parameters: {'learning_rate': 0.0012313169798261463, 'max_depth': 3, 'subsample': 0.42194492889917035, 'colsample_bytree': 0.2855821981804779, 'min_child_samples': 97}. Best is trial 13 with value: 0.4161842105263158.
+Trial 48 finished with value: 0.390921052631579 and parameters: {'learning_rate': 0.001849363339424648, 'max_depth': 4, 'subsample': 0.5811032931182336, 'colsample_bytree': 0.5012724378913023, 'min_child_samples': 81}. Best is trial 13 with value: 0.4161842105263158.
+Trial 49 finished with value: 0.4034210526315789 and parameters: {'learning_rate': 0.0021923060646407313, 'max_depth': 1, 'subsample': 0.6630477808337177, 'colsample_bytree': 0.36738701151037295, 'min_child_samples': 71}. Best is trial 13 with value: 0.4161842105263158.
+Trial 50 finished with value: 0.36486842105263156 and parameters: {'learning_rate': 0.0012563531383870338, 'max_depth': 2, 'subsample': 0.48582628584342985, 'colsample_bytree': 0.4379683027725154, 'min_child_samples': 59}. Best is trial 13 with value: 0.4161842105263158.
+Trial 51 finished with value: 0.40276315789473677 and parameters: {'learning_rate': 0.0010525829308450035, 'max_depth': 1, 'subsample': 0.4813754001766333, 'colsample_bytree': 0.41261348060873, 'min_child_samples': 99}. Best is trial 13 with value: 0.4161842105263158.
+Trial 52 finished with value: 0.4128947368421053 and parameters: {'learning_rate': 0.0010334417810451031, 'max_depth': 1, 'subsample': 0.5689464601213661, 'colsample_bytree': 0.3984402505672891, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 53 finished with value: 0.40539473684210525 and parameters: {'learning_rate': 0.0016642139302710968, 'max_depth': 1, 'subsample': 0.6037922883148965, 'colsample_bytree': 0.5071752290902117, 'min_child_samples': 92}. Best is trial 13 with value: 0.4161842105263158.
+Trial 54 finished with value: 0.3932894736842106 and parameters: {'learning_rate': 0.0011759910185593226, 'max_depth': 2, 'subsample': 0.5485712395825917, 'colsample_bytree': 0.44798837396546115, 'min_child_samples': 89}. Best is trial 13 with value: 0.4161842105263158.
+Trial 55 finished with value: 0.3901315789473684 and parameters: {'learning_rate': 0.0014590435307263458, 'max_depth': 1, 'subsample': 0.5758017254322717, 'colsample_bytree': 0.38841586501458536, 'min_child_samples': 96}. Best is trial 13 with value: 0.4161842105263158.
+Trial 56 finished with value: 0.3364473684210526 and parameters: {'learning_rate': 0.0015361316346847518, 'max_depth': 2, 'subsample': 0.6277255419418, 'colsample_bytree': 0.34879130258579777, 'min_child_samples': 25}. Best is trial 13 with value: 0.4161842105263158.
+Trial 57 finished with value: 0.3980263157894738 and parameters: {'learning_rate': 0.0011618718740302515, 'max_depth': 1, 'subsample': 0.6711853821350162, 'colsample_bytree': 0.3006479253967208, 'min_child_samples': 85}. Best is trial 13 with value: 0.4161842105263158.
+Trial 58 finished with value: 0.39526315789473687 and parameters: {'learning_rate': 0.0020887803517594624, 'max_depth': 9, 'subsample': 0.4410743919661877, 'colsample_bytree': 0.41446076287894074, 'min_child_samples': 77}. Best is trial 13 with value: 0.4161842105263158.
+Trial 59 finished with value: 0.39078947368421046 and parameters: {'learning_rate': 0.0011666865930173098, 'max_depth': 10, 'subsample': 0.5087183872695816, 'colsample_bytree': 0.47239838053422806, 'min_child_samples': 90}. Best is trial 13 with value: 0.4161842105263158.
+Trial 60 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.0017111623384335488, 'max_depth': 3, 'subsample': 0.5651995971578352, 'colsample_bytree': 0.5363235041248157, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 61 finished with value: 0.4002631578947368 and parameters: {'learning_rate': 0.0016366999535238483, 'max_depth': 3, 'subsample': 0.5665882061311759, 'colsample_bytree': 0.5426795031362235, 'min_child_samples': 98}. Best is trial 13 with value: 0.4161842105263158.
+Trial 62 finished with value: 0.4057894736842105 and parameters: {'learning_rate': 0.001395169819320058, 'max_depth': 2, 'subsample': 0.6115307548379005, 'colsample_bytree': 0.8813247389547205, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 63 finished with value: 0.4005263157894737 and parameters: {'learning_rate': 0.0010037455432955072, 'max_depth': 2, 'subsample': 0.5598176472154177, 'colsample_bytree': 0.26588554307159806, 'min_child_samples': 94}. Best is trial 13 with value: 0.4161842105263158.
+Trial 64 finished with value: 0.4003947368421053 and parameters: {'learning_rate': 0.0025908146986867455, 'max_depth': 1, 'subsample': 0.6532131349306106, 'colsample_bytree': 0.3303513930800026, 'min_child_samples': 95}. Best is trial 13 with value: 0.4161842105263158.
+Trial 65 finished with value: 0.40289473684210525 and parameters: {'learning_rate': 0.001871562030363774, 'max_depth': 3, 'subsample': 0.5230996760356069, 'colsample_bytree': 0.38580622275209386, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 66 finished with value: 0.39789473684210525 and parameters: {'learning_rate': 0.00115934842492307, 'max_depth': 2, 'subsample': 0.6050426008440967, 'colsample_bytree': 0.4776731379475676, 'min_child_samples': 93}. Best is trial 13 with value: 0.4161842105263158.
+Trial 67 finished with value: 0.39592105263157895 and parameters: {'learning_rate': 0.0014368984693470322, 'max_depth': 6, 'subsample': 0.4737225617426992, 'colsample_bytree': 0.7990992068750717, 'min_child_samples': 87}. Best is trial 13 with value: 0.4161842105263158.
+Trial 68 finished with value: 0.3696052631578947 and parameters: {'learning_rate': 0.0020425564436968215, 'max_depth': 1, 'subsample': 0.5770521607163581, 'colsample_bytree': 0.5771126296768675, 'min_child_samples': 46}. Best is trial 13 with value: 0.4161842105263158.
+Trial 69 finished with value: 0.40092105263157896 and parameters: {'learning_rate': 0.0017362201431160133, 'max_depth': 2, 'subsample': 0.5400487603893218, 'colsample_bytree': 0.6025694141609848, 'min_child_samples': 82}. Best is trial 13 with value: 0.4161842105263158.
+Trial 70 finished with value: 0.3928947368421053 and parameters: {'learning_rate': 0.0013203876168454414, 'max_depth': 1, 'subsample': 0.6279373726759632, 'colsample_bytree': 0.6344843387464335, 'min_child_samples': 97}. Best is trial 13 with value: 0.4161842105263158.
+Trial 71 finished with value: 0.3797368421052632 and parameters: {'learning_rate': 0.0010627210604456892, 'max_depth': 1, 'subsample': 0.5020473592589363, 'colsample_bytree': 0.41510192085073716, 'min_child_samples': 91}. Best is trial 13 with value: 0.4161842105263158.
+Trial 72 finished with value: 0.40328947368421053 and parameters: {'learning_rate': 0.0011737920485792885, 'max_depth': 1, 'subsample': 0.4976160820859424, 'colsample_bytree': 0.7065299926196651, 'min_child_samples': 100}. Best is trial 13 with value: 0.4161842105263158.
+Trial 73 finished with value: 0.4080263157894737 and parameters: {'learning_rate': 0.0010072655078617978, 'max_depth': 5, 'subsample': 0.45813384050191025, 'colsample_bytree': 0.5319274062719044, 'min_child_samples': 97}. Best is trial 13 with value: 0.4161842105263158.
+Trial 74 finished with value: 0.39552631578947367 and parameters: {'learning_rate': 0.0015205818294391049, 'max_depth': 2, 'subsample': 0.38677933421500554, 'colsample_bytree': 0.4503607126277359, 'min_child_samples': 94}. Best is trial 13 with value: 0.4161842105263158.
+Trial 75 finished with value: 0.39539473684210524 and parameters: {'learning_rate': 0.001428847834025858, 'max_depth': 1, 'subsample': 0.533156791089807, 'colsample_bytree': 0.48911679545602493, 'min_child_samples': 89}. Best is trial 13 with value: 0.4161842105263158.
+Trial 76 finished with value: 0.4130263157894737 and parameters: {'learning_rate': 0.0012828174068007458, 'max_depth': 3, 'subsample': 0.5965233759158856, 'colsample_bytree': 0.4242372881261088, 'min_child_samples': 98}. Best is trial 13 with value: 0.4161842105263158.
+Trial 77 finished with value: 0.41368421052631577 and parameters: {'learning_rate': 0.0013142452312372144, 'max_depth': 3, 'subsample': 0.5884891764916986, 'colsample_bytree': 0.43744529639156565, 'min_child_samples': 84}. Best is trial 13 with value: 0.4161842105263158.
+Trial 78 finished with value: 0.3977631578947369 and parameters: {'learning_rate': 0.0013008239082894731, 'max_depth': 4, 'subsample': 0.6000135919454522, 'colsample_bytree': 0.38390041722289836, 'min_child_samples': 84}. Best is trial 13 with value: 0.4161842105263158.
+Trial 79 finished with value: 0.3803947368421053 and parameters: {'learning_rate': 0.0011437616781718144, 'max_depth': 3, 'subsample': 0.6882109477511641, 'colsample_bytree': 0.429237318725883, 'min_child_samples': 65}. Best is trial 13 with value: 0.4161842105263158.
+Trial 80 finished with value: 0.3719736842105263 and parameters: {'learning_rate': 0.0023136953048452026, 'max_depth': 2, 'subsample': 0.6263229153245587, 'colsample_bytree': 0.35008589620248626, 'min_child_samples': 37}. Best is trial 13 with value: 0.4161842105263158.
+Trial 81 finished with value: 0.4130263157894737 and parameters: {'learning_rate': 0.0017041291836344915, 'max_depth': 3, 'subsample': 0.5659440446266231, 'colsample_bytree': 0.5238292627578331, 'min_child_samples': 97}. Best is trial 13 with value: 0.4161842105263158.
+Trial 82 finished with value: 0.3951315789473684 and parameters: {'learning_rate': 0.0013260616090551148, 'max_depth': 4, 'subsample': 0.6518563031179216, 'colsample_bytree': 0.4604855358234953, 'min_child_samples': 97}. Best is trial 13 with value: 0.4161842105263158.
+Trial 83 finished with value: 0.4003947368421053 and parameters: {'learning_rate': 0.0011532408888031986, 'max_depth': 3, 'subsample': 0.5890277184101396, 'colsample_bytree': 0.512723803698688, 'min_child_samples': 93}. Best is trial 13 with value: 0.4161842105263158.
+Trial 84 finished with value: 0.39552631578947367 and parameters: {'learning_rate': 0.0016273021813187549, 'max_depth': 2, 'subsample': 0.5341866625610495, 'colsample_bytree': 0.4262104662145001, 'min_child_samples': 95}. Best is trial 13 with value: 0.4161842105263158.
+Trial 85 finished with value: 0.38513157894736844 and parameters: {'learning_rate': 0.0019343896249072816, 'max_depth': 3, 'subsample': 0.5561005698830841, 'colsample_bytree': 0.48543677429314674, 'min_child_samples': 91}. Best is trial 13 with value: 0.4161842105263158.
+Trial 86 finished with value: 0.38013157894736843 and parameters: {'learning_rate': 0.0013607579148077749, 'max_depth': 3, 'subsample': 0.581525221056057, 'colsample_bytree': 0.3985093246884989, 'min_child_samples': 58}. Best is trial 13 with value: 0.4161842105263158.
+Trial 87 finished with value: 0.39302631578947367 and parameters: {'learning_rate': 0.0015366572205280779, 'max_depth': 2, 'subsample': 0.6160874344178504, 'colsample_bytree': 0.43767773654490383, 'min_child_samples': 78}. Best is trial 13 with value: 0.4161842105263158.
+Trial 88 finished with value: 0.38513157894736844 and parameters: {'learning_rate': 0.0010011474188805461, 'max_depth': 5, 'subsample': 0.6625737211626349, 'colsample_bytree': 0.4666875563935599, 'min_child_samples': 74}. Best is trial 13 with value: 0.4161842105263158.
+Trial 89 finished with value: 0.4107894736842105 and parameters: {'learning_rate': 0.0012204317007345896, 'max_depth': 4, 'subsample': 0.5218804530629845, 'colsample_bytree': 0.36542835065406226, 'min_child_samples': 87}. Best is trial 13 with value: 0.4161842105263158.
+Trial 90 finished with value: 0.4182894736842105 and parameters: {'learning_rate': 0.0020142566141110752, 'max_depth': 4, 'subsample': 0.5059899486562207, 'colsample_bytree': 0.3694693363172725, 'min_child_samples': 87}. Best is trial 90 with value: 0.4182894736842105.
+Trial 91 finished with value: 0.4106578947368421 and parameters: {'learning_rate': 0.002078125569485808, 'max_depth': 4, 'subsample': 0.49910810903885827, 'colsample_bytree': 0.36602260602163555, 'min_child_samples': 82}. Best is trial 90 with value: 0.4182894736842105.
+Trial 92 finished with value: 0.4159210526315789 and parameters: {'learning_rate': 0.0020522032763080527, 'max_depth': 4, 'subsample': 0.49317948191132277, 'colsample_bytree': 0.37375385729797683, 'min_child_samples': 86}. Best is trial 90 with value: 0.4182894736842105.
+Trial 93 finished with value: 0.41342105263157897 and parameters: {'learning_rate': 0.0017305934354461805, 'max_depth': 4, 'subsample': 0.5201531634565779, 'colsample_bytree': 0.3794986214901005, 'min_child_samples': 87}. Best is trial 90 with value: 0.4182894736842105.
+Trial 94 finished with value: 0.3951315789473684 and parameters: {'learning_rate': 0.0018279617804764282, 'max_depth': 5, 'subsample': 0.4765621900826466, 'colsample_bytree': 0.38807170604423236, 'min_child_samples': 79}. Best is trial 90 with value: 0.4182894736842105.
+Trial 95 finished with value: 0.41078947368421054 and parameters: {'learning_rate': 0.0026386915935373077, 'max_depth': 4, 'subsample': 0.4536190054539329, 'colsample_bytree': 0.4206242508948669, 'min_child_samples': 85}. Best is trial 90 with value: 0.4182894736842105.
+Trial 96 finished with value: 0.4030263157894736 and parameters: {'learning_rate': 0.002340420878074331, 'max_depth': 4, 'subsample': 0.547093602903002, 'colsample_bytree': 0.4035173869355907, 'min_child_samples': 88}. Best is trial 90 with value: 0.4182894736842105.
+Trial 97 finished with value: 0.39789473684210525 and parameters: {'learning_rate': 0.0017729697139282682, 'max_depth': 5, 'subsample': 0.493515123259104, 'colsample_bytree': 0.5092815174300658, 'min_child_samples': 90}. Best is trial 90 with value: 0.4182894736842105.
+Trial 98 finished with value: 0.4080263157894737 and parameters: {'learning_rate': 0.002209201255430998, 'max_depth': 6, 'subsample': 0.5193718474602398, 'colsample_bytree': 0.3382245565578556, 'min_child_samples': 82}. Best is trial 90 with value: 0.4182894736842105.
+Trial 99 finished with value: 0.39539473684210524 and parameters: {'learning_rate': 0.0030049138120145607, 'max_depth': 4, 'subsample': 0.560518318395276, 'colsample_bytree': 0.3119628702130744, 'min_child_samples': 98}. Best is trial 90 with value: 0.4182894736842105.
+Trial 100 finished with value: 0.3898684210526316 and parameters: {'learning_rate': 0.0015923874041835345, 'max_depth': 5, 'subsample': 0.4672311773346816, 'colsample_bytree': 0.4508118168886358, 'min_child_samples': 75}. Best is trial 90 with value: 0.4182894736842105.
+Trial 101 finished with value: 0.4109210526315789 and parameters: {'learning_rate': 0.0025044778124414203, 'max_depth': 4, 'subsample': 0.44312428785106295, 'colsample_bytree': 0.4215964249831187, 'min_child_samples': 85}. Best is trial 90 with value: 0.4182894736842105.
+Trial 102 finished with value: 0.4184210526315789 and parameters: {'learning_rate': 0.0020460237024875687, 'max_depth': 4, 'subsample': 0.5358834916531388, 'colsample_bytree': 0.37175928566971894, 'min_child_samples': 85}. Best is trial 102 with value: 0.4184210526315789.
+Trial 103 finished with value: 0.4027631578947369 and parameters: {'learning_rate': 0.0019514439889665764, 'max_depth': 7, 'subsample': 0.5346524147810742, 'colsample_bytree': 0.3397988566582315, 'min_child_samples': 83}. Best is trial 102 with value: 0.4184210526315789.
+Trial 104 finished with value: 0.3953947368421053 and parameters: {'learning_rate': 0.002133899517421671, 'max_depth': 4, 'subsample': 0.5720894491732477, 'colsample_bytree': 0.36973671442642225, 'min_child_samples': 93}. Best is trial 102 with value: 0.4184210526315789.
+Trial 105 finished with value: 0.39986842105263165 and parameters: {'learning_rate': 0.0014363755943159768, 'max_depth': 3, 'subsample': 0.5094851552808646, 'colsample_bytree': 0.30600487899069195, 'min_child_samples': 80}. Best is trial 102 with value: 0.4184210526315789.
+Trial 106 finished with value: 0.3876315789473684 and parameters: {'learning_rate': 0.0017387587967053933, 'max_depth': 4, 'subsample': 0.5905814573873738, 'colsample_bytree': 0.3519766454944773, 'min_child_samples': 72}. Best is trial 102 with value: 0.4184210526315789.
+Trial 107 finished with value: 0.39789473684210525 and parameters: {'learning_rate': 0.0035028232725555874, 'max_depth': 3, 'subsample': 0.553272491791994, 'colsample_bytree': 0.38100813539345463, 'min_child_samples': 88}. Best is trial 102 with value: 0.4184210526315789.
+Trial 108 finished with value: 0.38473684210526315 and parameters: {'learning_rate': 0.0012673363629280663, 'max_depth': 5, 'subsample': 0.4865629094726538, 'colsample_bytree': 0.44254567933416955, 'min_child_samples': 13}. Best is trial 102 with value: 0.4184210526315789.
+Trial 109 finished with value: 0.3823684210526316 and parameters: {'learning_rate': 0.0011211574037191298, 'max_depth': 3, 'subsample': 0.5349953820184687, 'colsample_bytree': 0.32487011066805327, 'min_child_samples': 76}. Best is trial 102 with value: 0.4184210526315789.
+Trial 110 finished with value: 0.3877631578947368 and parameters: {'learning_rate': 0.0027694353702493097, 'max_depth': 4, 'subsample': 0.6393082094114843, 'colsample_bytree': 0.40385191130634307, 'min_child_samples': 91}. Best is trial 102 with value: 0.4184210526315789.
+Trial 111 finished with value: 0.3928947368421053 and parameters: {'learning_rate': 0.0020034115493377433, 'max_depth': 4, 'subsample': 0.42729483654334033, 'colsample_bytree': 0.41115894427847827, 'min_child_samples': 95}. Best is trial 102 with value: 0.4184210526315789.
+Trial 112 finished with value: 0.40592105263157896 and parameters: {'learning_rate': 0.002549832604348258, 'max_depth': 4, 'subsample': 0.4569202678397271, 'colsample_bytree': 0.47905906384167524, 'min_child_samples': 86}. Best is trial 102 with value: 0.4184210526315789.
+Trial 113 finished with value: 0.41078947368421054 and parameters: {'learning_rate': 0.0016535233821198692, 'max_depth': 5, 'subsample': 0.510001057483021, 'colsample_bytree': 0.3795129673940521, 'min_child_samples': 84}. Best is trial 102 with value: 0.4184210526315789.
+Trial 114 finished with value: 0.3951315789473684 and parameters: {'learning_rate': 0.0024117782911186646, 'max_depth': 4, 'subsample': 0.5681894090959001, 'colsample_bytree': 0.4350613273725246, 'min_child_samples': 69}. Best is trial 102 with value: 0.4184210526315789.
+Trial 115 finished with value: 0.40539473684210525 and parameters: {'learning_rate': 0.0015157761199183647, 'max_depth': 3, 'subsample': 0.5892868651722452, 'colsample_bytree': 0.4954676669308109, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 116 finished with value: 0.3957894736842106 and parameters: {'learning_rate': 0.001392254829264256, 'max_depth': 1, 'subsample': 0.4857053539481979, 'colsample_bytree': 0.46358979200207484, 'min_child_samples': 85}. Best is trial 102 with value: 0.4184210526315789.
+Trial 117 finished with value: 0.3822368421052632 and parameters: {'learning_rate': 0.0010960446494101212, 'max_depth': 4, 'subsample': 0.40190185585609756, 'colsample_bytree': 0.3575903393074982, 'min_child_samples': 80}. Best is trial 102 with value: 0.4184210526315789.
+Trial 118 finished with value: 0.4002631578947368 and parameters: {'learning_rate': 0.0018154068498253976, 'max_depth': 3, 'subsample': 0.5466600050249304, 'colsample_bytree': 0.4020544887622305, 'min_child_samples': 90}. Best is trial 102 with value: 0.4184210526315789.
+Trial 119 finished with value: 0.3951315789473684 and parameters: {'learning_rate': 0.001251588789275354, 'max_depth': 1, 'subsample': 0.44502676333184477, 'colsample_bytree': 0.4243693384098072, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 120 finished with value: 0.3905263157894737 and parameters: {'learning_rate': 0.0020587773619493484, 'max_depth': 5, 'subsample': 0.46900216111271503, 'colsample_bytree': 0.5172942713087019, 'min_child_samples': 93}. Best is trial 102 with value: 0.4184210526315789.
+Trial 121 finished with value: 0.4110526315789474 and parameters: {'learning_rate': 0.0023902632976819816, 'max_depth': 4, 'subsample': 0.5233066509878386, 'colsample_bytree': 0.4162197883043276, 'min_child_samples': 86}. Best is trial 102 with value: 0.4184210526315789.
+Trial 122 finished with value: 0.41078947368421054 and parameters: {'learning_rate': 0.00238840785794734, 'max_depth': 4, 'subsample': 0.5248258018674145, 'colsample_bytree': 0.39064086846008034, 'min_child_samples': 86}. Best is trial 102 with value: 0.4184210526315789.
+Trial 123 finished with value: 0.4055263157894736 and parameters: {'learning_rate': 0.002900158749873596, 'max_depth': 4, 'subsample': 0.502594949797272, 'colsample_bytree': 0.3475203911230044, 'min_child_samples': 88}. Best is trial 102 with value: 0.4184210526315789.
+Trial 124 finished with value: 0.41276315789473694 and parameters: {'learning_rate': 0.0022058896507513664, 'max_depth': 4, 'subsample': 0.6019258464631145, 'colsample_bytree': 0.45968221023890904, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 125 finished with value: 0.4055263157894736 and parameters: {'learning_rate': 0.0016608490567988454, 'max_depth': 3, 'subsample': 0.5704746061131162, 'colsample_bytree': 0.4661102757716901, 'min_child_samples': 97}. Best is trial 102 with value: 0.4184210526315789.
+Trial 126 finished with value: 0.4003947368421053 and parameters: {'learning_rate': 0.0019132515310378321, 'max_depth': 1, 'subsample': 0.6072830870806549, 'colsample_bytree': 0.5536138282576893, 'min_child_samples': 99}. Best is trial 102 with value: 0.4184210526315789.
+Trial 127 finished with value: 0.39026315789473687 and parameters: {'learning_rate': 0.0022340538941179556, 'max_depth': 3, 'subsample': 0.604855597674671, 'colsample_bytree': 0.44787184397286417, 'min_child_samples': 94}. Best is trial 102 with value: 0.4184210526315789.
+Trial 128 finished with value: 0.3828947368421053 and parameters: {'learning_rate': 0.0033516766199300045, 'max_depth': 5, 'subsample': 0.6210971106534438, 'colsample_bytree': 0.49300178074653805, 'min_child_samples': 91}. Best is trial 102 with value: 0.4184210526315789.
+Trial 129 finished with value: 0.40552631578947373 and parameters: {'learning_rate': 0.0014848761347227525, 'max_depth': 4, 'subsample': 0.5516007793994802, 'colsample_bytree': 0.3677648313027405, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 130 finished with value: 0.3978947368421052 and parameters: {'learning_rate': 0.004651501186195728, 'max_depth': 1, 'subsample': 0.579820183804709, 'colsample_bytree': 0.28565209327636687, 'min_child_samples': 92}. Best is trial 102 with value: 0.4184210526315789.
+Trial 131 finished with value: 0.3877631578947368 and parameters: {'learning_rate': 0.0022264399554390527, 'max_depth': 4, 'subsample': 0.5271872381716752, 'colsample_bytree': 0.4280528387809686, 'min_child_samples': 95}. Best is trial 102 with value: 0.4184210526315789.
+Trial 132 finished with value: 0.4006578947368421 and parameters: {'learning_rate': 0.0028245751352313333, 'max_depth': 4, 'subsample': 0.5111422303610786, 'colsample_bytree': 0.41192295514353905, 'min_child_samples': 83}. Best is trial 102 with value: 0.4184210526315789.
+Trial 133 finished with value: 0.3955263157894737 and parameters: {'learning_rate': 0.0025819688627167566, 'max_depth': 4, 'subsample': 0.5506319167832474, 'colsample_bytree': 0.39405093202659885, 'min_child_samples': 89}. Best is trial 102 with value: 0.4184210526315789.
+Trial 134 finished with value: 0.39802631578947373 and parameters: {'learning_rate': 0.0032290302570758328, 'max_depth': 4, 'subsample': 0.5904748023402097, 'colsample_bytree': 0.45585304350413586, 'min_child_samples': 78}. Best is trial 102 with value: 0.4184210526315789.
+Trial 135 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.0017830145721059053, 'max_depth': 3, 'subsample': 0.49174952421106344, 'colsample_bytree': 0.42998477319806994, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 136 finished with value: 0.39802631578947373 and parameters: {'learning_rate': 0.002471155324820252, 'max_depth': 5, 'subsample': 0.6351014471744689, 'colsample_bytree': 0.3750302362407136, 'min_child_samples': 81}. Best is trial 102 with value: 0.4184210526315789.
+Trial 137 finished with value: 0.4086842105263158 and parameters: {'learning_rate': 0.0012777407042366463, 'max_depth': 3, 'subsample': 0.5378574099250547, 'colsample_bytree': 0.4700597688756438, 'min_child_samples': 86}. Best is trial 102 with value: 0.4184210526315789.
+Trial 138 finished with value: 0.3977631578947368 and parameters: {'learning_rate': 0.0020495199432796363, 'max_depth': 1, 'subsample': 0.5728164500631575, 'colsample_bytree': 0.4114638555737787, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 139 finished with value: 0.39342105263157895 and parameters: {'learning_rate': 0.001122542060888632, 'max_depth': 4, 'subsample': 0.47894211593146735, 'colsample_bytree': 0.5720305454329478, 'min_child_samples': 88}. Best is trial 102 with value: 0.4184210526315789.
+Trial 140 finished with value: 0.38526315789473686 and parameters: {'learning_rate': 0.0016044795098122762, 'max_depth': 4, 'subsample': 0.5263974902633516, 'colsample_bytree': 0.3330038788711264, 'min_child_samples': 57}. Best is trial 102 with value: 0.4184210526315789.
+Trial 141 finished with value: 0.41078947368421054 and parameters: {'learning_rate': 0.002670352968161408, 'max_depth': 4, 'subsample': 0.4565824719835861, 'colsample_bytree': 0.4220087865994136, 'min_child_samples': 85}. Best is trial 102 with value: 0.4184210526315789.
+Trial 142 finished with value: 0.40315789473684216 and parameters: {'learning_rate': 0.0026344358283688293, 'max_depth': 4, 'subsample': 0.4422333786551112, 'colsample_bytree': 0.3967035216489191, 'min_child_samples': 83}. Best is trial 102 with value: 0.4184210526315789.
+Trial 143 finished with value: 0.3877631578947368 and parameters: {'learning_rate': 0.0030612749745301524, 'max_depth': 4, 'subsample': 0.5030259490454068, 'colsample_bytree': 0.45117948863557233, 'min_child_samples': 93}. Best is trial 102 with value: 0.4184210526315789.
+Trial 144 finished with value: 0.4102631578947369 and parameters: {'learning_rate': 0.0021645072667981864, 'max_depth': 5, 'subsample': 0.5626472087767427, 'colsample_bytree': 0.43145529956904044, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 145 finished with value: 0.4036842105263158 and parameters: {'learning_rate': 0.0019276700253961655, 'max_depth': 4, 'subsample': 0.6176626625554239, 'colsample_bytree': 0.5384673289206832, 'min_child_samples': 85}. Best is trial 102 with value: 0.4184210526315789.
+Trial 146 finished with value: 0.393421052631579 and parameters: {'learning_rate': 0.003948621910384748, 'max_depth': 3, 'subsample': 0.5976588070094312, 'colsample_bytree': 0.9930051241508379, 'min_child_samples': 80}. Best is trial 102 with value: 0.4184210526315789.
+Trial 147 finished with value: 0.40855263157894744 and parameters: {'learning_rate': 0.00235468458503705, 'max_depth': 1, 'subsample': 0.46540848307371996, 'colsample_bytree': 0.3754285799554773, 'min_child_samples': 77}. Best is trial 102 with value: 0.4184210526315789.
+Trial 148 finished with value: 0.3982894736842105 and parameters: {'learning_rate': 0.0013729321461982463, 'max_depth': 4, 'subsample': 0.41089363405145357, 'colsample_bytree': 0.48518824184691633, 'min_child_samples': 90}. Best is trial 102 with value: 0.4184210526315789.
+Trial 149 finished with value: 0.4128947368421053 and parameters: {'learning_rate': 0.0010713135625244825, 'max_depth': 7, 'subsample': 0.5195110513626965, 'colsample_bytree': 0.3514527505232934, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 150 finished with value: 0.4128947368421053 and parameters: {'learning_rate': 0.0010543091764401956, 'max_depth': 7, 'subsample': 0.5142108529241982, 'colsample_bytree': 0.3504039297525862, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 151 finished with value: 0.4155263157894737 and parameters: {'learning_rate': 0.0010853697904969171, 'max_depth': 7, 'subsample': 0.5175028632302345, 'colsample_bytree': 0.3516226708787271, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 152 finished with value: 0.40013157894736845 and parameters: {'learning_rate': 0.0010000173170963069, 'max_depth': 7, 'subsample': 0.540612667734591, 'colsample_bytree': 0.3182270654922762, 'min_child_samples': 99}. Best is trial 102 with value: 0.4184210526315789.
+Trial 153 finished with value: 0.4130263157894737 and parameters: {'learning_rate': 0.0011271749389451943, 'max_depth': 8, 'subsample': 0.5110408869116448, 'colsample_bytree': 0.3463443614115522, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 154 finished with value: 0.41039473684210526 and parameters: {'learning_rate': 0.0010997353537321403, 'max_depth': 8, 'subsample': 0.5107774154128044, 'colsample_bytree': 0.3547688882325704, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 155 finished with value: 0.3928947368421053 and parameters: {'learning_rate': 0.0011830812561079084, 'max_depth': 7, 'subsample': 0.5569821626908993, 'colsample_bytree': 0.3507358428482045, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 156 finished with value: 0.41565789473684206 and parameters: {'learning_rate': 0.0010697439471027037, 'max_depth': 8, 'subsample': 0.49005526018989426, 'colsample_bytree': 0.32747695418305145, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 157 finished with value: 0.39026315789473687 and parameters: {'learning_rate': 0.0010789858718938986, 'max_depth': 8, 'subsample': 0.4918383749834143, 'colsample_bytree': 0.32425558780655833, 'min_child_samples': 97}. Best is trial 102 with value: 0.4184210526315789.
+Trial 158 finished with value: 0.4005263157894737 and parameters: {'learning_rate': 0.0012264971553638446, 'max_depth': 8, 'subsample': 0.4761075410645317, 'colsample_bytree': 0.3002799299378301, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 159 finished with value: 0.38526315789473686 and parameters: {'learning_rate': 0.0010027123222812661, 'max_depth': 7, 'subsample': 0.518965646315482, 'colsample_bytree': 0.3383441540055856, 'min_child_samples': 95}. Best is trial 102 with value: 0.4184210526315789.
+Trial 160 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.0012119778360043523, 'max_depth': 9, 'subsample': 0.541814827841976, 'colsample_bytree': 0.3696930202273687, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 161 finished with value: 0.39526315789473687 and parameters: {'learning_rate': 0.0013235896061815687, 'max_depth': 8, 'subsample': 0.4990332081699594, 'colsample_bytree': 0.3339645926596724, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 162 finished with value: 0.4055263157894736 and parameters: {'learning_rate': 0.0011531918741975698, 'max_depth': 6, 'subsample': 0.5791678415969068, 'colsample_bytree': 0.9569773503393478, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 163 finished with value: 0.39539473684210524 and parameters: {'learning_rate': 0.0010835913598370276, 'max_depth': 7, 'subsample': 0.5627246434377484, 'colsample_bytree': 0.37815949373523366, 'min_child_samples': 95}. Best is trial 102 with value: 0.4184210526315789.
+Trial 164 finished with value: 0.40539473684210525 and parameters: {'learning_rate': 0.0013193736169934654, 'max_depth': 7, 'subsample': 0.5350283376657111, 'colsample_bytree': 0.35486400184394207, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 165 finished with value: 0.39552631578947367 and parameters: {'learning_rate': 0.001476772913006901, 'max_depth': 9, 'subsample': 0.5107524095607642, 'colsample_bytree': 0.29873191192173, 'min_child_samples': 97}. Best is trial 102 with value: 0.4184210526315789.
+Trial 166 finished with value: 0.39789473684210525 and parameters: {'learning_rate': 0.0010944443093183058, 'max_depth': 8, 'subsample': 0.4864529142987189, 'colsample_bytree': 0.39512404077731933, 'min_child_samples': 94}. Best is trial 102 with value: 0.4184210526315789.
+Trial 167 finished with value: 0.4030263157894737 and parameters: {'learning_rate': 0.0012159563656904263, 'max_depth': 6, 'subsample': 0.5564906446661382, 'colsample_bytree': 0.27180202258267716, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 168 finished with value: 0.39802631578947373 and parameters: {'learning_rate': 0.0010127917020294537, 'max_depth': 8, 'subsample': 0.5993692663775564, 'colsample_bytree': 0.31409445690190146, 'min_child_samples': 92}. Best is trial 102 with value: 0.4184210526315789.
+Trial 169 finished with value: 0.41052631578947374 and parameters: {'learning_rate': 0.0014054986215361422, 'max_depth': 7, 'subsample': 0.578886247547716, 'colsample_bytree': 0.38263967609094734, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 170 finished with value: 0.39039473684210524 and parameters: {'learning_rate': 0.0012596408846915408, 'max_depth': 9, 'subsample': 0.5282149484798951, 'colsample_bytree': 0.34598476527262, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 171 finished with value: 0.4078947368421053 and parameters: {'learning_rate': 0.0011001386166015648, 'max_depth': 8, 'subsample': 0.5165052716899832, 'colsample_bytree': 0.39863478783903117, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 172 finished with value: 0.3878947368421052 and parameters: {'learning_rate': 0.0015872209987346513, 'max_depth': 7, 'subsample': 0.5397852776848191, 'colsample_bytree': 0.7034406953127872, 'min_child_samples': 94}. Best is trial 102 with value: 0.4184210526315789.
+Trial 173 finished with value: 0.3928947368421053 and parameters: {'learning_rate': 0.0011666628943336464, 'max_depth': 8, 'subsample': 0.4931848091771566, 'colsample_bytree': 0.3708387486344963, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 174 finished with value: 0.4057894736842105 and parameters: {'learning_rate': 0.0014051128197262823, 'max_depth': 10, 'subsample': 0.5215000565060282, 'colsample_bytree': 0.756610159591897, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 175 finished with value: 0.4002631578947368 and parameters: {'learning_rate': 0.0017538788242738989, 'max_depth': 6, 'subsample': 0.5550785372697207, 'colsample_bytree': 0.627171842294391, 'min_child_samples': 96}. Best is trial 102 with value: 0.4184210526315789.
+Trial 176 finished with value: 0.40539473684210525 and parameters: {'learning_rate': 0.0010649210360513038, 'max_depth': 7, 'subsample': 0.4728825181033958, 'colsample_bytree': 0.41175780356304365, 'min_child_samples': 98}. Best is trial 102 with value: 0.4184210526315789.
+Trial 177 finished with value: 0.38802631578947366 and parameters: {'learning_rate': 0.0010001042939223183, 'max_depth': 1, 'subsample': 0.5849323353459868, 'colsample_bytree': 0.8223377563682395, 'min_child_samples': 92}. Best is trial 102 with value: 0.4184210526315789.
+Trial 178 finished with value: 0.4078947368421053 and parameters: {'learning_rate': 0.0012758880545333997, 'max_depth': 1, 'subsample': 0.5028676246676087, 'colsample_bytree': 0.36169923873070836, 'min_child_samples': 100}. Best is trial 102 with value: 0.4184210526315789.
+Trial 179 finished with value: 0.3769736842105263 and parameters: {'learning_rate': 0.0015234278222490483, 'max_depth': 8, 'subsample': 0.5334565840176949, 'colsample_bytree': 0.44807005326448707, 'min_child_samples': 49}. Best is trial 102 with value: 0.4184210526315789.
+Trial 180 finished with value: 0.36960526315789477 and parameters: {'learning_rate': 0.008136143578132984, 'max_depth': 2, 'subsample': 0.625038259682313, 'colsample_bytree': 0.331816553664131, 'min_child_samples': 1}. Best is trial 102 with value: 0.4184210526315789.
+Trial 181 finished with value: 0.4161842105263157 and parameters: {'learning_rate': 0.001995006313538735, 'max_depth': 7, 'subsample': 0.4369610681507734, 'colsample_bytree': 0.4166762344570597, 'min_child_samples': 87}. Best is trial 102 with value: 0.4184210526315789.
+Trial 182 finished with value: 0.40065789473684205 and parameters: {'learning_rate': 0.0019466504087057917, 'max_depth': 7, 'subsample': 0.46376214251023, 'colsample_bytree': 0.4085280955847056, 'min_child_samples': 89}. Best is trial 102 with value: 0.4184210526315789.
+Trial 183 finished with value: 0.41342105263157897 and parameters: {'learning_rate': 0.0017407838811732302, 'max_depth': 7, 'subsample': 0.5645662455896621, 'colsample_bytree': 0.38825075672101655, 'min_child_samples': 87}. Best is trial 102 with value: 0.4184210526315789.
+Trial 184 failed with parameters: {'learning_rate': 0.001727937999135895, 'max_depth': 7, 'subsample': 0.6019886624445545, 'colsample_bytree': 0.3840597677213143, 'min_child_samples': 98} because of the following error: TerminatedWorkerError('A worker process managed by the executor was unexpectedly terminated. This could be caused by a segmentation fault while calling the function or by an excessive memory usage causing the Operating System to kill the worker.\n').
+Traceback (most recent call last):
+  File "C:\Users\artur\AppData\Roaming\Python\Python311\site-packages\optuna\study\_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "c:\Users\artur\OneDrive\Desktop\University\NLP\NLP-Project\NLP_proj\hyperparams.py", line 42, in lgbm_objective
+    score = model_selection.cross_val_score(clf, X_train, y_train, n_jobs=10, cv=20)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 515, in cross_val_score
+    cv_results = cross_validate(
+                 ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\model_selection\_validation.py", line 266, in cross_validate
+    results = parallel(
+              ^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\sklearn\utils\parallel.py", line 63, in __call__
+    return super().__call__(iterable_with_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 1098, in __call__
+    self.retrieve()
+  File "C:\Python311\Lib\site-packages\joblib\parallel.py", line 975, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\joblib\_parallel_backends.py", line 567, in wrap_future_result
+    return future.result(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+joblib.externals.loky.process_executor.TerminatedWorkerError: A worker process managed by the executor was unexpectedly terminated. This could be caused by a segmentation fault while calling the function or by an excessive memory usage causing the Operating System to kill the worker.
+
+Trial 184 failed with value None.
