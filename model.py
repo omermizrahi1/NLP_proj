@@ -1,4 +1,5 @@
 
+import os
 from lightgbm import LGBMClassifier
 from matplotlib import pyplot as plt
 import numpy as np
@@ -22,9 +23,9 @@ import numpy as np
 def test_train(method, comb = False):
     filename = f'merged_comb_{method}.xlsx'
     if comb:
-        df = pd.read_excel(f'merged_comb_{method}.xlsx')
+        df = pd.read_excel(os.path.join('excel', f'merged_comb_{method}.xlsx'))
     else:
-        df = pd.read_excel(f'merged_{method}.xlsx')
+        df = pd.read_excel(os.path.join('excel', f'merged_{method}.xlsx'))
     df.replace({None: pd.NA}, inplace=True)
     df.drop(columns=['target word_0'], inplace=True)
     df.dropna(subset=[method.capitalize()], inplace=True)
