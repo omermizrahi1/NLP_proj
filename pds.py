@@ -82,7 +82,7 @@ def dict_word(word, info, sentence_id, target_verb):
 
 
 # read the excel file
-excel_file_path = 'verbs.xlsx'
+excel_file_path = 'nifal_tanach_verbs.xlsx'
 sheet_name = 'Tanach verbs'
 verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
 grouped = verbs_df.groupby('source')
@@ -107,7 +107,7 @@ if os.path.exists("sentences.xlsx"):
 else:
     combined_df = pd.read_excel('sentences.xlsx')
 
-excel_file_path = 'verbs.xlsx'
+excel_file_path = 'nifal_tanach_verbs.xlsx'
 sheet_name = 'Tanach verbs'
 verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
 def get_window(words, index, window_size):

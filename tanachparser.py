@@ -55,7 +55,7 @@ for v in nifal_words:
 combined_df = pd.concat([df for df in df_list], ignore_index=True)
 print(combined_df)
 
-file_path = 'verbs.xlsx'
+file_path = 'nifal_tanach_verbs.xlsx'
 sheet_name = 'Tanach verbs'
 write_dataframe_to_excel(combined_df, sheet_name, file_path)
 
