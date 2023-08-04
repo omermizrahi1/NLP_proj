@@ -51,6 +51,7 @@
 ## אימון המסווג
 
 תחילה הפרדנו את ה - data למדגם אימון ומדגם מבחן (train, test). לאחר מכן השתמשנו בספרייה [Lazy Predict](https://lazypredict.readthedocs.io/en/latest/usage.html#classification) כדי לבחור את המודל עם מדד ה - accuracy הגבוה ביותר על מדגם ה - test. את התוצאות ניתן לראות בקובץ ```lazypredict_results.txt``` שבתיקיית ```logs```.
+<br>
 קורפוס התנ"ך
 - עבור גלינרט ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
 - עבור בלאו ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [XGBoost](https://xgboost.readthedocs.io/en/stable/python/python_api.html)
