@@ -3,6 +3,7 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 
 directory = "tanach"
+excel_folder = "excel"
 filenames = [os.path.join(directory, f) for f in ["Exodus.xml", "Leviticus.xml", "Numbers.xml"]]
 hebrew_binyans = ['NIFAL', 'PAAL', 'HIFIL', 'PIEL', 'PUAL', 'HITPAEL', 'HUFAL']
 pos_values = ['ADVERB', 'PRONOUN', 'INTERROGATIVE', 'INTERJECTION', 'ADJECTIVE', 'CONJUNCTION', 'NEGATION',
@@ -44,7 +45,7 @@ def all_words(filenames):
                                 data.append(row)
 
     df = pd.DataFrame(data)
-    df.to_excel('tanach_words.xlsx', index=False)
+    df.to_excel(os.path.join(excel_folder, 'tanach_words.xlsx'), index=False)
 
 def all_verbs(filenames):
     data = []
@@ -73,7 +74,7 @@ def all_verbs(filenames):
                                 if row not in data:
                                     data.append(row)
     df = pd.DataFrame(data)
-    df.to_excel('tanach_verbs.xlsx', index=False)
+    df.to_excel(os.path.join(excel_folder, 'tanach_verbs.xlsx'), index=False)
 
 def pos_val(filenames):
     pos_values = set()

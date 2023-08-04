@@ -1,7 +1,8 @@
 import pds
 import pandas as pd
+import os
 
-
+excel_folder = 'excel'
 sheet_name = 'Tanach verbs'
 verbs_df = pds.verbs_df
 sentences_df = pds.combined_df
@@ -66,7 +67,7 @@ new_df_blau = new_df.copy()
 comb_df_glinert = comb_df.copy()
 comb_df_blau = comb_df.copy()
 
-tagged_verbs = pd.read_excel('tagged_verbs.xlsx', sheet_name=sheet_name)
+tagged_verbs = pd.read_excel(os.path.join('excel','tagged_verbs.xlsx'), sheet_name=sheet_name)
 glinert_column = tagged_verbs['Glinert']
 blau_column = tagged_verbs['Blau']
 
@@ -75,9 +76,9 @@ new_df_blau = pd.concat([new_df_blau, blau_column], axis=1)
 comb_df_glinert = pd.concat([comb_df_glinert, glinert_column], axis=1)
 comb_df_blau = pd.concat([comb_df_blau, blau_column], axis=1)
 
-new_df.to_excel('merged.xlsx', index=False)
-new_df_glinert.to_excel('merged_glinert.xlsx', index=False)
-new_df_blau.to_excel('merged_blau.xlsx', index=False)
-comb_df_glinert.to_excel('merged_comb_glinert.xlsx', index=False)
-comb_df_blau.to_excel('merged_comb_blau.xlsx', index=False)
+new_df.to_excel(os.path.join(excel_folder, 'merged.xlsx'), index=False)
+new_df_glinert.to_excel(os.path.join(excel_folder, 'merged_glinert.xlsx'), index=False)
+new_df_blau.to_excel(os.path.join(excel_folder, 'merged_blau.xlsx'), index=False)
+comb_df_glinert.to_excel(os.path.join(excel_folder, 'merged_comb_glinert.xlsx'), index=False)
+comb_df_blau.to_excel(os.path.join(excel_folder, 'merged_comb_blau.xlsx'), index=False)
 

@@ -1,17 +1,20 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
+import os
+
 
 def read_dataframes():
-    tanach_words_df = pd.read_excel('tanach_words.xlsx')
-    tanach_verbs_df = pd.read_excel('tanach_verbs.xlsx')
-    tanach_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Tanach verbs')
-    wiki_words_df = pd.read_excel('wiki_words.xlsx')
-    wiki_verbs_df = pd.read_excel('wiki_verbs.xlsx')
-    wiki_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Wiki verbs')
-    # wiki_nifal_df = pd.read_excel('nifal_tanach_verbs.xlsx', sheet_name='Tancah verbs')
-
+    excel_folder = "excel"
+    tanach_words_df = pd.read_excel(os.path.join(excel_folder, 'tanach_words.xlsx'))
+    tanach_verbs_df = pd.read_excel(os.path.join(excel_folder, 'tanach_verbs.xlsx'))
+    tanach_tagged_verbs_df = pd.read_excel(os.path.join(excel_folder, 'tagged_verbs.xlsx'), sheet_name='Tanach verbs')
+    wiki_words_df = pd.read_excel(os.path.join(excel_folder, 'wiki_words.xlsx'))
+    wiki_verbs_df = pd.read_excel(os.path.join(excel_folder, 'wiki_verbs.xlsx'))
+    wiki_tagged_verbs_df = pd.read_excel(os.path.join(excel_folder, 'tagged_verbs.xlsx'), sheet_name='Wiki verbs')
     return tanach_words_df, tanach_verbs_df, tanach_tagged_verbs_df, wiki_words_df, wiki_verbs_df, wiki_tagged_verbs_df
+
+
+
 
 
 

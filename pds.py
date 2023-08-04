@@ -79,10 +79,10 @@ def dict_word(word, info, sentence_id, target_verb):
     w['target verb'] = target_verb
     return w
 
-
+excel_folder = 'excel'
 
 # read the excel file
-excel_file_path = 'nifal_tanach_verbs.xlsx'
+excel_file_path = os.path.join(excel_folder,'verbs.xlsx')
 sheet_name = 'Tanach verbs'
 verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
 grouped = verbs_df.groupby('source')
@@ -103,11 +103,11 @@ if os.path.exists("sentences.xlsx"):
                 w['index'] = i
                 df_list.append(pd.DataFrame(w, index=[0]))
     combined_df = pd.concat([df for df in df_list], ignore_index=True)
-    combined_df.to_excel('sentences.xlsx', index=False)
+    combined_df.to_excel(os.path.join(excel_folder, 'sentences.xlsx'), index=False)
 else:
-    combined_df = pd.read_excel('sentences.xlsx')
+    combined_df = pd.read_excel(os.path.join(excel_folder, 'sentences.xlsx'))
 
-excel_file_path = 'nifal_tanach_verbs.xlsx'
+excel_file_path = 'verbs.xlsx'
 sheet_name = 'Tanach verbs'
 verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
 def get_window(words, index, window_size):
@@ -145,5 +145,5 @@ def get_words_by_window(sentences_df,verbs_df,window_size=2):
 
 window = 5
 window_df = get_words_by_window(combined_df,verbs_df,window)
-window_df.to_excel(f'window_words_{window}.xlsx', index=False)
+window_df.to_excel(os.path.join(excel_folder, f'window_words_{window}.xlsx'), index=False)
 

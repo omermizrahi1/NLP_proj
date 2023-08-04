@@ -6,6 +6,7 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.preprocessing import OneHotEncoder
 from xgboost import XGBClassifier
 from model import test_train
+import os 
 
 
 
@@ -84,10 +85,11 @@ def test_optimization():
 
 
 def encoded_dataset(method, comb=True):
+    excel_folder = 'excel'
     if comb:
-        df = pd.read_excel(f'merged_comb_{method}.xlsx')
+        df = pd.read_excel(os.path.join(excel_folder,f'merged_comb_{method}.xlsx'))
     else:
-        df = pd.read_excel(f'merged_{method}.xlsx')
+        df = pd.read_excel(os.path.join(excel_folder,f'merged_{method}.xlsx'))
     df.replace({None: pd.NA}, inplace=True)
     df.drop(columns=['target word_0'], inplace=True)
     df.dropna(subset=[method.capitalize()], inplace=True)

@@ -4,6 +4,9 @@ from conllu import parse
 import pandas as pd
 
 
+
+excel_folder = 'excel'
+
 def isverb(word):
     return word['upos'] == 'VERB'
 
@@ -103,6 +106,6 @@ for sentence, src in sent_list:
 
 combined_df = pd.concat([df for df in df_list], ignore_index=True)
 verbs_df = combined_df[combined_df['pos'] == 'VERB']
-combined_df.to_excel('wiki_words.xlsx', index=False)
-verbs_df.to_excel('wiki_verbs.xlsx', index=False)
+combined_df.to_excel(os.path.join(excel_folder, 'wiki_words.xlsx'), index=False)
+verbs_df.to_excel(os.path.join(excel_folder,'wiki_verbs.xlsx'), index=False)
 
