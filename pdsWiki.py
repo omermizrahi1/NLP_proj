@@ -43,19 +43,19 @@ def get_words_by_window(sentences_df, verbs_df, window_size=2):
 
 excel_file_path = 'verbs.xlsx'
 sheet_name = 'Wiki verbs'
-verbs_df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
+verbs_df = pd.read_excel(os.path.join('excel', excel_file_path), sheet_name=sheet_name)
 print(verbs_df)
 
 grouped = verbs_df.groupby('source')
 list_of_dataframes = [group for _, group in grouped]
 sources = [name for name, _ in grouped]
 
-combined_df = pd.read_excel('sentences.xlsx')
+combined_df = pd.read_excel(os.path.join('excel', 'sentences.xlsx'))
 
 
 # Set window size and generate a dataframe of words in the window around each target verb
 window = 5
 window_df = get_words_by_window(combined_df,verbs_df,window)
-window_df.to_excel(f'window_words_{window}.xlsx', index=False)
+window_df.to_excel(os.path.join('excel', f'window_words_{window}.xlsx'), index=False)
 
     

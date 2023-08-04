@@ -1,15 +1,12 @@
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
 
 def read_dataframes():
-    # tanach_words_df = pd.read_excel('tanach_words.xlsx')
-    # tanach_verbs_df = pd.read_excel('tanach_verbs.xlsx')
-    # tanach_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Tancah verbs')
-    # tanach_nifal_df = pd.read_excel('verbs.xlsx', sheet_name='Tancah verbs')
-    wiki_words_df = pd.read_excel('wiki_words.xlsx')
-    wiki_verbs_df = pd.read_excel('wiki_verbs.xlsx')
-    wiki_tagged_verbs_df = pd.read_excel('tagged_verbs.xlsx', sheet_name='Wiki verbs')
-    wiki_nifal_df = pd.read_excel('verbs.xlsx', sheet_name='Wiki verbs')
+    wiki_words_df = pd.read_excel(os.path.join('excel', 'wiki_words.xlsx'))
+    wiki_verbs_df = pd.read_excel(os.path.join('excel', 'wiki_verbs.xlsx'))
+    wiki_tagged_verbs_df = pd.read_excel(os.path.join('excel', 'tagged_verbs.xlsx'), sheet_name='Wiki verbs')
+    wiki_nifal_df = pd.read_excel(os.path.join('excel', 'verbs.xlsx'), sheet_name='Wiki verbs')
 
     return wiki_words_df,wiki_verbs_df,wiki_tagged_verbs_df,wiki_nifal_df
 # Calculate the total number of words

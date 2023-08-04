@@ -1,4 +1,5 @@
 
+import os
 import pdsWiki
 import pandas as pd
 
@@ -79,7 +80,7 @@ new_df_blau = new_df.copy()
 comb_df_glinert = comb_df.copy()
 comb_df_blau = comb_df.copy()
 
-tagged_verbs = pd.read_excel('tagged_verbs.xlsx', sheet_name=sheet_name)
+tagged_verbs = pd.read_excel(os.path.join('excel', 'tagged_verbs.xlsx'), sheet_name=sheet_name)
 glinert_column = tagged_verbs['Glinert']
 blau_column = tagged_verbs['Blau']
 
@@ -113,8 +114,8 @@ for i in range(11):
     comb_df_blau = comb_df_blau.drop(columns=[f'SENTENCE ID Text_{i}', f'SENTENCE ID Number_{i}'], errors='ignore')
 
 
-new_df.to_excel('merged.xlsx', index=False)
-new_df_glinert.to_excel('merged_glinert.xlsx', index=False)
-new_df_blau.to_excel('merged_blau.xlsx', index=False)
-comb_df_glinert.to_excel('merged_comb_glinert.xlsx', index=False)
-comb_df_blau.to_excel('merged_comb_blau.xlsx', index=False)
+new_df.to_excel(os.path.join('excel', 'merged.xlsx'), index=False)
+new_df_glinert.to_excel(os.path.join('excel', 'merged_glinert.xlsx'), index=False)
+new_df_blau.to_excel(os.path.join('excel', 'merged_blau.xlsx'), index=False)
+comb_df_glinert.to_excel(os.path.join('excel', 'merged_comb_glinert.xlsx'), index=False)
+comb_df_blau.to_excel(os.path.join('excel', 'merged_comb_blau.xlsx'), index=False)
