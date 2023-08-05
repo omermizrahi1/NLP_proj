@@ -73,7 +73,7 @@
 את תוצאות האימון עבור Tanach ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/trainedmodels.ipynb).</br>
 את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/trainedmodels.ipynb).</br>
 את הסטטיסיקות עבור Tanach ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/datastatistics.ipynb).</br>
-את הסטטיסיקות עבור Tanach ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/datastatistics.ipynb).</br>
+את הסטטיסיקות עבור Wiki ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/datastatistics.ipynb).</br>
 אפשר לראות שהתוצאות שקיבלנו לא מדהימות. הנה כמה סיבות אפשריות לכך:
 - דאטה סט קטן מידי – 500~ דוגמאות זה מספר מעט מידי של דוגמאות.
 - דוגמאות לא מאוזנות. כפי שניתן לראות בסטטיסטיקות שהוצאנו על ה - data, לכל גישה יש 2 תיוגים שמהוות את רוב התיוגים בעוד שיש תיוגים שכמעט ולא מופיעים.
