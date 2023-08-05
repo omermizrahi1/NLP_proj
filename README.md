@@ -14,7 +14,9 @@
 ## בחירת הטקסטים
 
 כשעברנו על הטקסטים בשני הקורפוסים, ראינו שיש הרבה טקסטים מתחום המשפט, ולכן חשבנו לבחור טקסטים מקבילים מהתנ"ך שהם קשורים למשפט גם כן. בחרנו בטקסטים מהתורה ובפרט מספרי שמות, ויקרא, במדבר, כי שם יש טקסטים בעלי אופי משפטי – חוקים. 
-בדיעבד לאחר משימת תיוג הטקסטים לדעתנו הבחירה בטקסטים אלו הייתה שגויה, משום שאם היינו בוחרים טקסטים יותר מגוונים היינו יכולים לקבל תוצאות טובות יותר באופן כללי מכלל התנ"ך, שכן בטקסטים שבחרנו מהתנ"ך יש פעלים רבים ותבניות שחוזרות על עצמן.
+בדיעבד לאחר משימת תיוג הטקסטים לדעתנו הבחירה בטקסטים אלו הייתה שגויה, משום שאם היינו בוחרים טקסטים יותר מגוונים היינו יכולים לקבל תוצאות טובות יותר באופן כללי מכלל התנ"ך, שכן בטקסטים שבחרנו מהתנ"ך יש פעלים רבים ותבניות שחוזרות על עצמן. 
+<br>
+את הטקקסטים שבחרנו ניתן לראות בתיקיות ```tanach``` ו```wiki```
 
 ## עיבוד הטקסטים
 כדי להתחיל במשימת התיוג היה עלינו לשלוף מהקורפוסים שבחרנו את הפעלים הרלוונטיים לפי הבניין שבחרנו.
@@ -30,7 +32,9 @@
 
 ## סטטיסטיקות על הדאטה
 
-אספנו מספר סטטיסטיקות שיכולות ללמד אותנו על טיב ה- data שאספנו. את הסטטיסטיקות הללו ניתן למצוא במחברת ```datastatistics.ipynb``` בכל ענף.
+אספנו מספר סטטיסטיקות שיכולות ללמד אותנו על טיב ה- data שאספנו. את הסטטיסטיקות הללו ניתן למצוא במחברת ```datastatistics.ipynb```
+ - סטטסיסטיקות של ה[התנ"ך](https://github.com/omermizrahi1/NLP_proj/blob/main/notebooks/tanach/datastatistics.ipynb) 
+ - סטטיסטיקות של [ויקיפדיה](https://github.com/omermizrahi1/NLP_proj/blob/main/notebooks/wiki/datastatistics.ipynb) 
 
 ## בניית וקטור הדוגמאות
 
@@ -59,10 +63,10 @@
 - עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)
 
 קורפוס ויקיפדיה העברית
-- עבור גלינרט ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא.
-- עבור בלאו ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא 
-- עבור גלינרט עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא 
-- עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא
+- עבור גלינרט ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html).
+- עבור בלאו ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [XGBClassifier](https://xgboost.readthedocs.io/en/stable/python/python_api.html).
+- עבור גלינרט עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [NearestCentroid](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestCentroid.html).
+- עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [XGBClassifier](https://xgboost.readthedocs.io/en/stable/python/python_api.html).
 
 לאחר מכן החלטנו לקחת את המודל שהניב את המדדים הכי טובים בכל גישה, ולעשות לו hyperparameters tuning ו-cross validation. זאת עשינו בעזרת ספריית [Optuna](https://optuna.org/), המשמשת לאופטימיזציה של היפר פרמטרים, תוך שימוש באופטימיזציה מבוססת SMBO כדי לחפש ביעילות את ערכי הhyperparameters הטובים ביותר. את תוצאות ההרצה ניתן לראות בקבצי הלוגים אשר נמצאים בתיקיית logs.
 לאחר הרצת optuna רצינו לבדוק האם באמת הhyperparameter tuning  נתנה לנו תוצאות טובות. הרצנו את המתודה test_optimiztion אשר נמצאת במחברת ```trainedmodel.ipynb```. ניתן לראות שעבור המודלים שאימנו על קורפוס התנ"ך היה שיפור, אם כי שיפור מינורי. להשלים על ויקי.
@@ -71,9 +75,7 @@
 ## תוצאות
 
 את תוצאות האימון עבור Tanach ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/trainedmodels.ipynb).</br>
-את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/trainedmodels.ipynb).</br>
-את הסטטיסיקות עבור Tanach ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/datastatistics.ipynb).</br>
-את הסטטיסיקות עבור Wiki ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/datastatistics.ipynb).</br>
+את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/wiki/Jupyter%20Notebooks/trainedmodels.ipynb).</br>
 אפשר לראות שהתוצאות שקיבלנו לא מדהימות. הנה כמה סיבות אפשריות לכך:
 - דאטה סט קטן מידי – 500~ דוגמאות זה מספר מעט מידי של דוגמאות.
 - דוגמאות לא מאוזנות. כפי שניתן לראות בסטטיסטיקות שהוצאנו על ה - data, לכל גישה יש 2 תיוגים שמהוות את רוב התיוגים בעוד שיש תיוגים שכמעט ולא מופיעים.
