@@ -59,10 +59,10 @@
 - עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html)
 
 קורפוס ויקיפדיה העברית
-- עבור גלינרט ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא.
-- עבור בלאו ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא 
-- עבור גלינרט עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא 
-- עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא
+- עבור גלינרט ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html).
+- עבור בלאו ללא הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [XGBClassifier](https://xgboost.readthedocs.io/en/stable/python/python_api.html).
+- עבור גלינרט עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [NearestCentroid](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestCentroid.html).
+- עבור בלאו עם הרכב מאפיינים המודל הכי טוב שקיבלנו הוא [XGBClassifier](https://xgboost.readthedocs.io/en/stable/python/python_api.html).
 
 לאחר מכן החלטנו לקחת את המודל שהניב את המדדים הכי טובים בכל גישה, ולעשות לו hyperparameters tuning ו-cross validation. זאת עשינו בעזרת ספריית [Optuna](https://optuna.org/), המשמשת לאופטימיזציה של היפר פרמטרים, תוך שימוש באופטימיזציה מבוססת SMBO כדי לחפש ביעילות את ערכי הhyperparameters הטובים ביותר. את תוצאות ההרצה ניתן לראות בקבצי הלוגים אשר נמצאים בתיקיית logs.
 לאחר הרצת optuna רצינו לבדוק האם באמת הhyperparameter tuning  נתנה לנו תוצאות טובות. הרצנו את המתודה test_optimiztion אשר נמצאת במחברת ```trainedmodel.ipynb```. ניתן לראות שעבור המודלים שאימנו על קורפוס התנ"ך היה שיפור, אם כי שיפור מינורי. להשלים על ויקי.
@@ -71,9 +71,9 @@
 ## תוצאות
 
 את תוצאות האימון עבור Tanach ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/trainedmodels.ipynb).</br>
-את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/trainedmodels.ipynb).</br>
+את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/wiki/trainedmodels.ipynb).</br>
 את הסטטיסיקות עבור Tanach ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/datastatistics.ipynb).</br>
-את הסטטיסיקות עבור Wiki ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach_window/datastatistics.ipynb).</br>
+את הסטטיסיקות עבור Wiki ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/wiki/datastatistics.ipynb).</br>
 אפשר לראות שהתוצאות שקיבלנו לא מדהימות. הנה כמה סיבות אפשריות לכך:
 - דאטה סט קטן מידי – 500~ דוגמאות זה מספר מעט מידי של דוגמאות.
 - דוגמאות לא מאוזנות. כפי שניתן לראות בסטטיסטיקות שהוצאנו על ה - data, לכל גישה יש 2 תיוגים שמהוות את רוב התיוגים בעוד שיש תיוגים שכמעט ולא מופיעים.
