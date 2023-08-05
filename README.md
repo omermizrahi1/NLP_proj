@@ -30,7 +30,9 @@
 
 ## סטטיסטיקות על הדאטה
 
-אספנו מספר סטטיסטיקות שיכולות ללמד אותנו על טיב ה- data שאספנו. את הסטטיסטיקות הללו ניתן למצוא במחברת ```datastatistics.ipynb``` בכל ענף.
+אספנו מספר סטטיסטיקות שיכולות ללמד אותנו על טיב ה- data שאספנו. את הסטטיסטיקות הללו ניתן למצוא במחברת ```datastatistics.ipynb```
+ - סטטסיסטיקות של ה[התנ"ך](https://github.com/omermizrahi1/NLP_proj/blob/main/notebooks/tanach/datastatistics.ipynb) 
+ - סטטיסטיקות של [ויקיפדיה](https://github.com/omermizrahi1/NLP_proj/blob/main/notebooks/wiki/datastatistics.ipynb) 
 
 ## בניית וקטור הדוגמאות
 
@@ -72,8 +74,6 @@
 
 את תוצאות האימון עבור Tanach ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/trainedmodels.ipynb).</br>
 את תוצאות האימון עבור Wiki ניתן לראות בקובץ [Classifier Notebook](https://github.com/omermizrahi1/NLP_proj/blob/wiki/Jupyter%20Notebooks/trainedmodels.ipynb).</br>
-את הסטטיסיקות עבור Tanach ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/tanach/Jupyter%20Notebooks/datastatistics.ipynb).</br>
-את הסטטיסיקות עבור Wiki ניתן לראות בקובץ  [Statistics](https://github.com/omermizrahi1/NLP_proj/blob/wiki/Jupyter%20Notebooks/datastatistics.ipynb).</br>
 אפשר לראות שהתוצאות שקיבלנו לא מדהימות. הנה כמה סיבות אפשריות לכך:
 - דאטה סט קטן מידי – 500~ דוגמאות זה מספר מעט מידי של דוגמאות.
 - דוגמאות לא מאוזנות. כפי שניתן לראות בסטטיסטיקות שהוצאנו על ה - data, לכל גישה יש 2 תיוגים שמהוות את רוב התיוגים בעוד שיש תיוגים שכמעט ולא מופיעים.
