@@ -106,3 +106,12 @@ plt.figure(figsize=(10, 10))
 plt.pie(tense_distribution, labels = tense_distribution.index, autopct='%1.1f%%')
 plt.title("Tense Distribution in wiki_nifal_df")
 plt.show()
+
+# Calculate the tense distribution
+number_distribution = verbs_df['number'].value_counts()
+
+# Plot the tense distribution
+plt.figure(figsize=(10, 10))
+plt.pie(number_distribution, labels = number_distribution.index, autopct='%1.1f%%')
+plt.title("Number Distribution")
+plt.show()
